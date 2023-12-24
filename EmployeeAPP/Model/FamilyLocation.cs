@@ -1,13 +1,13 @@
 ﻿namespace EmployeeAPP.Model;
 
-public class Family_location
+public class FamilyLocation
 {
     public int ID { get; set; }
     public string Name { get; set; }
 
-    public Family_location() { }
+    public FamilyLocation() { }
 
-    public Family_location(int ID, string Name)
+    public FamilyLocation(int ID, string Name)
     {
         this.ID = ID;
         this.Name = Name;

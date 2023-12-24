@@ -101,5 +101,29 @@ public class DataBaseManager
     }
     
     /// Функцианальные запросы
-
+    // public static void AddRoomType(RoomType roomType)
+    // {
+    //     Dictionary<string, object> parameters = new Dictionary<string, object>
+    //     {
+    //         { "name", roomType.Name }
+    //     };
+    //
+    //     AddEntity(roomType, "room_type", parameters);
+    // }
+    //
+    // public static void UpdateRoomType(RoomType roomType)
+    // {
+    //     Dictionary<string, object> parameters = new Dictionary<string, object>
+    //     {
+    //         { "ID", roomType.Id },
+    //         { "name", roomType.Name }
+    //     };
+    //
+    //     UpdateEntity(roomType, "room_type", parameters, "ID");
+    // }
+    //
+    // public static void DeleteRoomType(int roomTypeId)
+    // {
+    //     DeleteEntity("room_type", "ID", roomTypeId);
+    // }
 }
