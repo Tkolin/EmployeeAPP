@@ -3,6 +3,7 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="EmployeeAPP/App.axaml" value="EmployeeAPP/EmployeeAPP.csproj" />
         <entry key="EmployeeAPP/MainWindow.axaml" value="EmployeeAPP/EmployeeAPP.csproj" />
         <entry key="EmployeeAPP/PagesAndWindows/CardReportEmployeeWindow.axaml" value="EmployeeAPP/EmployeeAPP.csproj" />
         <entry key="EmployeeAPP/PagesAndWindows/EmployeeEditPage.axaml" value="EmployeeAPP/EmployeeAPP.csproj" />
