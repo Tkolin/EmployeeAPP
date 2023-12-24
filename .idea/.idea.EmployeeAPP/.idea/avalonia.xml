@@ -4,6 +4,7 @@
     <option name="projectPerEditor">
       <map>
         <entry key="EmployeeAPP/MainWindow.axaml" value="EmployeeAPP/EmployeeAPP.csproj" />
+        <entry key="EmployeeAPP/PagesAndWindows/CardReportEmployeeWindow.axaml" value="EmployeeAPP/EmployeeAPP.csproj" />
         <entry key="EmployeeAPP/PagesAndWindows/EmployeeEditPage.axaml" value="EmployeeAPP/EmployeeAPP.csproj" />
         <entry key="EmployeeAPP/PagesAndWindows/HelloPage.axaml" value="EmployeeAPP/EmployeeAPP.csproj" />
         <entry key="EmployeeAPP/PagesAndWindows/MainWindow.axaml" value="EmployeeAPP/EmployeeAPP.csproj" />

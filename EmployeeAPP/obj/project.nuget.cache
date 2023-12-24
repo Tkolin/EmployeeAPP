@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CeuT+2klETOJXrtCQ4+/6mpFBekQa3x8t4CXyMi9cGX//nyfExmXUBuCSvlTGUS5BmRMRVgHgX1VXXghauVt9A==",
+  "dgSpecHash": "Pa4FHgP/TvF883GtNWNQSuRaaLB6UtDKC3chpqetsBlzwl31FGMKKW+7gRJqttHfNnmM0AvLw+Zc4vkCd9Cf0g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Grigoriy\\Pictures\\EmployeeAPP\\EmployeeAPP\\EmployeeAPP.csproj",
   "expectedPackageFiles": [
@@ -32,9 +32,11 @@
     "C:\\Users\\Grigoriy\\.nuget\\packages\\microsoft.codeanalysis.csharp.scripting\\3.8.0\\microsoft.codeanalysis.csharp.scripting.3.8.0.nupkg.sha512",
     "C:\\Users\\Grigoriy\\.nuget\\packages\\microsoft.codeanalysis.scripting.common\\3.8.0\\microsoft.codeanalysis.scripting.common.3.8.0.nupkg.sha512",
     "C:\\Users\\Grigoriy\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
+    "C:\\Users\\Grigoriy\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
     "C:\\Users\\Grigoriy\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Users\\Grigoriy\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Grigoriy\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\Grigoriy\\.nuget\\packages\\mysqlconnector\\2.3.3\\mysqlconnector.2.3.3.nupkg.sha512",
     "C:\\Users\\Grigoriy\\.nuget\\packages\\skiasharp\\2.88.3\\skiasharp.2.88.3.nupkg.sha512",
     "C:\\Users\\Grigoriy\\.nuget\\packages\\skiasharp.nativeassets.linux\\2.88.3\\skiasharp.nativeassets.linux.2.88.3.nupkg.sha512",
     "C:\\Users\\Grigoriy\\.nuget\\packages\\skiasharp.nativeassets.macos\\2.88.3\\skiasharp.nativeassets.macos.2.88.3.nupkg.sha512",
