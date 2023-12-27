@@ -16,6 +16,9 @@ public class DataBaseManager
             UserID = "root",
             Password = "tkl909" // "tkl909"//"nrjkby99"
         };
+    /// Связь
+    
+    
     
     /// Шаблоны
     public static List<T> GetData<T>(string query, Func<MySqlDataReader, T> mapFunction)

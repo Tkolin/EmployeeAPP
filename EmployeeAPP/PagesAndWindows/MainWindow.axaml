@@ -2,8 +2,105 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        xmlns:models="clr-namespace:EmployeeAPP.Model"
+        mc:Ignorable="d"
+        
+        MinHeight="900" MinWidth = "1600"  MaxHeight="900" MaxWidth = "1600" 
         x:Class="EmployeeAPP.PagesAndWindows.MainWindow"
         Title="MainWindow">
-        
+        <StackPanel>
+                <DockPanel>
+                        <Menu DockPanel.Dock="Top">
+                                <MenuItem Header="Файл">
+                                 
+                                        <MenuItem Header="Настройки подключения"/>
+                                        <Separator/>
+                                        <MenuItem Header="Выход"/>
+
+                                </MenuItem>
+                                <MenuItem Header="Сотрудник">
+                                        <MenuItem Header="Добавить"/>
+                                        <MenuItem Header="Редактировать"/>
+                                        <MenuItem Header="Редактировать"/>
+                                        <Separator/>
+                                        <MenuItem Header="Поиск"/>
+                                        <Separator/>
+                                        <MenuItem Header="Обновить"/>
+                                </MenuItem>
+                                <MenuItem Header="Справочнаики">
+
+                                </MenuItem>
+                                <MenuItem Header="Отчёты">
+                                        <MenuItem Header="Личная карточка"/>
+                                        <MenuItem Header="Штатное расписание"/>
+                                        <Separator/>
+                                        <MenuItem Header="Режим редактирования отчётов"/>
+                                </MenuItem>
+                                <MenuItem Header="Настройки">
+                                        <MenuItem Header="Настройки таблицы"/>
+                                </MenuItem>
+                        </Menu>
+                        <TextBlock/>
+                </DockPanel>   
+
+                <StackPanel Height="2" Background="Black" Margin="3"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Image Width="50" Height="50"/>
+                        <Image Width="50" Height="50"/>
+                        <Image Width="50" Height="50"/>
+                        <StackPanel Width="2" Background="Black" Margin="3"/>
+                        <Image Width="50" Height="50"/>
+                        <StackPanel Width="2" Background="Black" Margin="3"/>
+                        <Image Width="50" Height="50"/>
+                        <StackPanel Width="2" Background="Black" Margin="3"/>
+                        <Image Width="50" Height="50"/>
+                </StackPanel>
+                <StackPanel Height="2" Background="Black" Margin="3"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBox x:Name="SearchBox" Watermark="Поиск..." Width="300" Margin="10,0,10,0" />
+                        <Button Content="Сбросить" Click="Button_OnClick"/>
+                </StackPanel>
+                <StackPanel Height="2" Background="Black" Margin="3"/>
+                <Grid ColumnDefinitions="2*,0.1*,1*" ShowGridLines="True">
+                        <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" Text="Сотрудники"/>
+                        <DataGrid Grid.Column="0" x:Name="DataGridEmploy"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  GridLinesVisibility="All"
+                                  BorderThickness="2"
+                                  Margin="30" 
+                                  x:DataType="models:Employee">
+                                <DataGrid.Columns>
+                                        <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
+                                        <DataGridTextColumn Width="*" Header="Имя" Binding="{Binding First_Name}"/>
+                                        <DataGridTextColumn Width="*" Header="Фамилия" Binding="{Binding Last_Name}"/>
+                                        <DataGridTextColumn Width="*" Header="Отчество" Binding="{Binding Patronymic}"/>
+                                        <DataGridTextColumn Width="*" Header="Дата рождения" Binding="{Binding Birth_Date}"/>
+                                        <DataGridTextColumn Width="*" Header="Номер телефона" Binding="{Binding Phone_Number}"/>
+                                        <DataGridTextColumn Width="*" Header="ИНН" Binding="{Binding INN}"/>
+                                        <DataGridTextColumn Width="*" Header="Семейное положение" Binding="{Binding FamilyNameData}"/>
+                                        <DataGridTextColumn Width="*" Header="Пол" Binding="{Binding GenderNameData}"/>
+                                        <DataGridTextColumn Width="*" Header="Паспорт" Binding="{Binding PassportNameData}"/>
+                                </DataGrid.Columns>
+                        </DataGrid>
+                        <TextBlock Grid.Column="2" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" Text="Информация в компании"/>
+                        <DataGrid Grid.Column="2" x:Name="DataGridOrderToWork"
+                                                 AutoGenerateColumns="False"
+                                                 IsReadOnly="True"
+                                                 GridLinesVisibility="All"
+                                                 BorderThickness="2"
+                                                 Margin="30" 
+                                                 x:DataType="models:EmployeeToWork">
+                                <DataGrid.Columns>
+                                        <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
+                                        <DataGridTextColumn Width="*" Header="Должность" Binding="{Binding PositionData}"/>
+                                        <DataGridTextColumn Width="*" Header="Отдел" Binding="{Binding UnitData}"/>
+                                        <DataGridTextColumn Width="*" Header="Приказ уволнения" Binding="{Binding DismissalnData}"/>
+                                        <DataGridTextColumn Width="*" Header="Данные о приказе о приеме на работу" Binding="{Binding EmploymentOrderData}"/>
+
+                                </DataGrid.Columns>
+                        </DataGrid>
+                        
+                </Grid>
+        </StackPanel>
 </Window>

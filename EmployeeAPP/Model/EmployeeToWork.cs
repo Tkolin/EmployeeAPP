@@ -8,6 +8,11 @@ public class EmployeeToWork
     public int Unit_ID { get; set; }
     public int Dismissal_ID { get; set; }
     public int employment_order_ID { get; set; }
+    
+    public string PositionData  {get; set; }
+    public string UnitData  {get; set; }
+    public string DismissalnData  {get; set; }
+    public string EmploymentOrderData  {get; set; }
 
     public EmployeeToWork() { }
 
@@ -17,7 +22,11 @@ public class EmployeeToWork
         int positionId,
         int unitId,
         int dismissalId,
-        int employmentOrderId
+        int employmentOrderId,
+        string positionData,
+        string unitData,
+        string dsmissalnData,
+        string employmentOrderData
     )
     {
         ID = id;
@@ -26,5 +35,9 @@ public class EmployeeToWork
         Unit_ID = unitId;
         Dismissal_ID = dismissalId;
         employment_order_ID = employmentOrderId;
+        PositionData =positionData;
+            UnitData=unitData;
+        DismissalnData=dsmissalnData;
+            EmploymentOrderData=employmentOrderData;
     }
 }

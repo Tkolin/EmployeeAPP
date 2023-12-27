@@ -2,8 +2,102 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d"
+        MinHeight="800" MinWidth="1200" MaxHeight="800" MaxWidth="1200v"
         x:Class="EmployeeAPP.PagesAndWindows.ReferencesPage"
-        Title="ReferencesPage">
-    Welcome to Avalonia!
+        xmlns:models="clr-namespace:EmployeeAPP.Model"
+        Title="Справочники">
+  <StackPanel>
+      <TabControl Margin="5">
+
+          <TabItem Header="Отделы">
+             <StackPanel>
+                
+                 <DataGrid  x:Name="DataGridUnit"
+                            AutoGenerateColumns="False"
+                            IsReadOnly="True"
+                            GridLinesVisibility="All"
+                            BorderThickness="2"
+                            Margin="30" 
+                            x:DataType="models:Unit">
+                     <DataGrid.Columns>
+                         <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
+                         <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Name}"/>
+                     </DataGrid.Columns>
+                 </DataGrid>
+             </StackPanel>
+
+    
+          </TabItem>
+          <TabItem Header="Должности">
+              <StackPanel>
+                 <DataGrid  x:Name="DataGridPosition"
+                             AutoGenerateColumns="False"
+                             IsReadOnly="True"
+                             GridLinesVisibility="All"
+                             BorderThickness="2"
+                             Margin="30" 
+                             x:DataType="models:Position">
+                      <DataGrid.Columns>
+                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
+                          <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Name}"/>
+                      </DataGrid.Columns>
+                  </DataGrid>
+              </StackPanel>
+          </TabItem>
+          <TabItem Header="Договора увольнения">
+              <StackPanel>
+                  <DataGrid  x:Name="DataGridDismise"
+                             AutoGenerateColumns="False"
+                             IsReadOnly="True"
+                             GridLinesVisibility="All"
+                             BorderThickness="2"
+                             Margin="30" 
+                             x:DataType="models:Dismissal">
+                      <DataGrid.Columns>
+                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
+                          <DataGridTextColumn Width="*" Header="Дата" Binding="{Binding Date}"/>
+                      </DataGrid.Columns>
+                  </DataGrid>
+              </StackPanel>
+          </TabItem>
+          <TabItem Header="Договора приёма на работу">
+              <StackPanel>
+                  <DataGrid  x:Name="DataGridOrderToWork"
+                             AutoGenerateColumns="False"
+                             IsReadOnly="True"
+                             GridLinesVisibility="All"
+                             BorderThickness="2"
+                             Margin="30" 
+                             x:DataType="models:EmploymentOrder">
+                      <DataGrid.Columns>
+                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
+                          <DataGridTextColumn Width="*" Header="Дата документа" Binding="{Binding Date}"/>
+                          <DataGridTextColumn Width="*" Header="Номер договора" Binding="{Binding Contract_Number}"/>
+                          <DataGridTextColumn Width="*" Header="Дата приёма на работу" Binding="{Binding Date_Employment}"/>
+                      </DataGrid.Columns>
+                  </DataGrid>
+              </StackPanel>
+          </TabItem>
+          <TabItem Header="Паспорта">
+              <StackPanel>
+                  <DataGrid  x:Name="DataGridPassport"
+                             AutoGenerateColumns="False"
+                             IsReadOnly="True"
+                             GridLinesVisibility="All"
+                             BorderThickness="2"
+                             Margin="30" 
+                             x:DataType="models:Passport">
+                      <DataGrid.Columns>
+                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
+                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Series}"/>
+                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Number}"/>
+                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Registration_Address}"/>
+                      </DataGrid.Columns>
+                  </DataGrid>
+              </StackPanel>
+          </TabItem>
+      </TabControl> 
+  </StackPanel>
+
 </Window>

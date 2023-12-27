@@ -5,5 +5,5 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="EmployeeAPP.PagesAndWindows.CardReportEmployeeWindow"
         Title="CardReportEmployeeWindow">
-    Welcome to Avalonia!
+    Ну тут вообще красота должна быть
 </Window>
