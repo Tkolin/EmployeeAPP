@@ -52,6 +52,8 @@ public partial class HelloPage : Window
 
     private void BtnClose_OnClick(object? sender, RoutedEventArgs e)
     {
-        Close();
+        MainWindow wMeny = new MainWindow();
+        wMeny.Show();
+        this.Hide();
     }
 }

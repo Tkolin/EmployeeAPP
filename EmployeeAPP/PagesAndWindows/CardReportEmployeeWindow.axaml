@@ -2,12 +2,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" 
+        d:DesignWidth="200 " d:DesignHeight="200 "
         x:Class="EmployeeAPP.PagesAndWindows.CardReportEmployeeWindow"
         Title="CardReportEmployeeWindow">
-        <Grid>
-                <Grid>
-                
-                </Grid>
-        </Grid>
+        <StackPanel Orientation="Vertical" Margin="10" Background="Beige" >
+                <Button x:Name="BtnCrateCard" Click="BtnCrateCard_OnClick" Content="Создать карточку" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+              
+        </StackPanel>
 </Window>

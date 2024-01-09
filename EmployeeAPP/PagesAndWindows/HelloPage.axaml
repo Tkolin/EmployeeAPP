@@ -6,7 +6,7 @@
         MaxHeight="450" MaxWidth="450" MinHeight=" 450" MinWidth="450"
         x:Class="EmployeeAPP.HelloPage"
         Title="EmployeeAPP">
-        <Grid>
+        <Grid Background="Beige" Margin="5">
     
         
         <StackPanel 

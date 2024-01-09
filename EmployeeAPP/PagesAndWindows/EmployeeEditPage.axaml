@@ -7,7 +7,7 @@
         x:Class="EmployeeAPP.PagesAndWindows.EmployeeEditPage"
         xmlns:models="clr-namespace:EmployeeAPP.Model"
         Title="EmployeeEditPage">
- <StackPanel>
+ <StackPanel Background="Azure">
       <TabControl Margin="5">
           <TabItem Header="Основные данные">
               

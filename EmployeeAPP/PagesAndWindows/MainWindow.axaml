@@ -8,8 +8,8 @@
         MinHeight="900" MinWidth = "1600"  MaxHeight="900" MaxWidth = "1600" 
         x:Class="EmployeeAPP.PagesAndWindows.MainWindow"
         Title="MainWindow">
-        <StackPanel>
-                <DockPanel>
+        <StackPanel Background="Beige">
+                <DockPanel Background="Azure">
                         <Menu DockPanel.Dock="Top">
                                 <MenuItem Header="Файл">
                                  
@@ -44,42 +44,42 @@
                 </DockPanel>   
 
                 <StackPanel Height="2" Background="Black" Margin="3"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                       <Button x:Name="BtnAdd" Click="BtnAdd_OnClick"  Width="50">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Background="Beige">
+                       <Button x:Name="BtnAdd" Click="BtnAdd_OnClick">
                                <Panel>
-                                       <Image Width="50" Height="50" Source="../Resursed/background0.jpg"/>
+                                       <Image Width="50" Height="50" Source="C:\Users\Grigoriy\Pictures\EmployeeAPP\EmployeeAPP\Resursed\database_add_2107.png"/>
                                </Panel>
                        </Button>
                         <Button x:Name="BtnEdit" Click="BtnEdit_OnClick">
                                 <Panel>
-                                        <Image Width="50" Height="50"/>
+                                        <Image Width="50" Height="50" Source="C:\Users\Grigoriy\Pictures\EmployeeAPP\EmployeeAPP\Resursed\database_edit_7543.png"/>
                                 </Panel>
                         </Button>                   
                         <Button x:Name="BtnDelet" Click="BtnDelet_OnClick">
                                 <Panel>
-                                        <Image Width="50" Height="50"/>
+                                        <Image Width="50" Height="50" Source="C:\Users\Grigoriy\Pictures\EmployeeAPP\EmployeeAPP\Resursed\database_delete_7487.png"/>
                                 </Panel>
                         </Button>
                         <StackPanel Width="2" Background="Black" Margin="3"/>
                         <Button x:Name="BtnUpdateDataGrid" Click="BtnUpdateDataGrid_OnClick">
                                 <Panel>
-                                        <Image Width="50" Height="50"/>
+                                        <Image Width="50" Height="50" Source="C:\Users\Grigoriy\Pictures\EmployeeAPP\EmployeeAPP\Resursed\database_refresh_9744.png"/>
                                 </Panel>
                         </Button>
                         <StackPanel Width="2" Background="Black" Margin="3"/>
                         <Button x:Name="BtnOpenCart" Click="BtnOpenCart_OnClick">
                                 <Panel>
-                                        <Image Width="50" Height="50"/>
+                                        <Image Width="50" Height="50" Source="C:\Users\Grigoriy\Pictures\EmployeeAPP\EmployeeAPP\Resursed\lists_8483.png"/>
                                 </Panel>
                         </Button>
                 </StackPanel>
                 <StackPanel Height="2" Background="Black" Margin="3"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <TextBox x:Name="TBoxSearchBox" TextChanged="TBoxSearchBox_OnTextChanged" Watermark="Поиск..." Width="300" Margin="10,0,10,0" />
+                        <TextBox x:Name="TBoxSearchBox" Text="" TextChanged="TBoxSearchBox_OnTextChanged" Watermark="Поиск..." Width="300" Margin="10,0,10,0" />
                         <Button Content="Сбросить" x:Name="BtnReset" Click="BtnReset_OnClick"/>
                 </StackPanel>
                 <StackPanel Height="2" Background="Black" Margin="3"/>
-                <Grid ColumnDefinitions="2*,0.1*,1*" ShowGridLines="True">
+                <Grid ColumnDefinitions="2*,0.1*,1*" ShowGridLines="True" Background="Beige">
                         <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" Text="Сотрудники"/>
                         <DataGrid Grid.Column="0" x:Name="DataGridEmploy"
                                   AutoGenerateColumns="False"

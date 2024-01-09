@@ -7,10 +7,10 @@
         x:Class="EmployeeAPP.PagesAndWindows.ReferencesPage"
         xmlns:models="clr-namespace:EmployeeAPP.Model"
         Title="Справочники">
-  <StackPanel>
-      <TabControl Margin="5">
+  <StackPanel Background="Beige" Margin="5">
+      <TabControl Margin="5" Background="Azure">
 
-          <TabItem Header="Отделы">
+          <TabItem Header="Отделы" >
              <StackPanel>
                 
                  <DataGrid  x:Name="DataGridUnit"
