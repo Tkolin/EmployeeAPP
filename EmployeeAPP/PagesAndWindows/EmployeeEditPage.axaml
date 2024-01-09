@@ -2,8 +2,181 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" 
+        MinHeight="1600" MinWidth = "900"  MaxHeight="1600" MaxWidth = "900" 
         x:Class="EmployeeAPP.PagesAndWindows.EmployeeEditPage"
+        xmlns:models="clr-namespace:EmployeeAPP.Model"
         Title="EmployeeEditPage">
-    Welcome to Avalonia!
+ <StackPanel>
+      <TabControl Margin="5">
+          <TabItem Header="Основные данные">
+              
+              <Grid ColumnDefinitions="2*,7*" RowDefinitions="50,50,50,50,50,50,50,50,50,50,50,50,50">
+                  
+                  <TextBlock Grid.Column="0" Grid.Row="0" Text="Код: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="0" x:Name="TBoxID" Margin="10"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Фамилия: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="1" x:Name="TBoxLastName" Margin="10"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Имя: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="2" x:Name="TBoxFirstName" Margin="10"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Отчество: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="3" x:Name="TBoxPatronymic" Margin="10"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="4" Text="Пол: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="4" x:Name="CBoxGender" Margin="10"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="5" Text="Семейное положение: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="5" x:Name="CBoxFamily" Margin="10"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="6" Text="Дата рождения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="6" x:Name="DPicerDateBirth" Margin="10"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="7" Text="Место рождения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="7" x:Name="TBoxPointStart" Margin="10"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="8" Text="Образование: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="8" x:Name="TBoxEducation" Margin="10"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="9" Text="Специальность: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="9" x:Name="CBoxPosition" Margin="10"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="10" Text="Телефон: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="10" x:Name="TBoxPhoneNumber" Margin="10"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="11" Text="Адресс регистранции: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="11" x:Name="TBoxAdressReg" Margin="10"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="12" Text="Адресс проживания: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="12" x:Name="TBoxAdressPos" Margin="10"/>
+             </Grid>
+
+    
+          </TabItem>
+          <TabItem Header="Докуменгты">
+              <StackPanel>
+                 <DataGrid  x:Name="DataGridPosition"
+                             AutoGenerateColumns="False"
+                             IsReadOnly="True"
+                             GridLinesVisibility="All"
+                             BorderThickness="2"
+                             Margin="30" 
+                             x:DataType="models:Position">
+                      <DataGrid.Columns>
+                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
+                          <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Name}"/>
+                      </DataGrid.Columns>
+                  </DataGrid>
+              </StackPanel>
+          </TabItem>
+          <TabItem Header="Трудоустройство">
+              <StackPanel>
+                  <DataGrid  x:Name="DataGridDismise"
+                             AutoGenerateColumns="False"
+                             IsReadOnly="True"
+                             GridLinesVisibility="All"
+                             BorderThickness="2"
+                             Margin="30" 
+                             x:DataType="models:Dismissal">
+                      <DataGrid.Columns>
+                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
+                          <DataGridTextColumn Width="*" Header="Дата" Binding="{Binding Date}"/>
+                      </DataGrid.Columns>
+                  </DataGrid>
+              </StackPanel>
+          </TabItem>
+          <TabItem Header="Увольнение">
+              <StackPanel>
+                  <DataGrid  x:Name="DataGridOrderToWork"
+                             AutoGenerateColumns="False"
+                             IsReadOnly="True"
+                             GridLinesVisibility="All"
+                             BorderThickness="2"
+                             Margin="30" 
+                             x:DataType="models:EmploymentOrder">
+                      <DataGrid.Columns>
+                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
+                          <DataGridTextColumn Width="*" Header="Дата документа" Binding="{Binding Date}"/>
+                          <DataGridTextColumn Width="*" Header="Номер договора" Binding="{Binding Contract_Number}"/>
+                          <DataGridTextColumn Width="*" Header="Дата приёма на работу" Binding="{Binding Date_Employment}"/>
+                      </DataGrid.Columns>
+                  </DataGrid>
+              </StackPanel>
+          </TabItem>
+          <TabItem Header="Стаж">
+              <StackPanel>
+                  <DataGrid  x:Name="DataGridPassport"
+                             AutoGenerateColumns="False"
+                             IsReadOnly="True"
+                             GridLinesVisibility="All"
+                             BorderThickness="2"
+                             Margin="30" 
+                             x:DataType="models:Passport">
+                      <DataGrid.Columns>
+                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
+                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Series}"/>
+                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Number}"/>
+                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Registration_Address}"/>
+                      </DataGrid.Columns>
+                  </DataGrid>
+              </StackPanel>
+          </TabItem>
+          <TabItem Header="Семья">
+              <StackPanel>
+                  <DataGrid  x:Name="DataGridFamily"
+                             AutoGenerateColumns="False"
+                             IsReadOnly="True"
+                             GridLinesVisibility="All"
+                             BorderThickness="2"
+                             Margin="30" 
+                             x:DataType="models:Passport">
+                      <DataGrid.Columns>
+                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
+                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Series}"/>
+                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Number}"/>
+                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Registration_Address}"/>
+                      </DataGrid.Columns>
+                  </DataGrid>
+              </StackPanel>
+          </TabItem>
+          <TabItem Header="Отпуск">
+              <StackPanel>
+                  <DataGrid  x:Name="DataGridOtpusk"
+                             AutoGenerateColumns="False"
+                             IsReadOnly="True"
+                             GridLinesVisibility="All"
+                             BorderThickness="2"
+                             Margin="30" 
+                             x:DataType="models:Passport">
+                      <DataGrid.Columns>
+                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
+                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Series}"/>
+                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Number}"/>
+                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Registration_Address}"/>
+                      </DataGrid.Columns>
+                  </DataGrid>
+              </StackPanel>
+          </TabItem>
+          <TabItem Header="Командировка">
+              <StackPanel>
+                  <DataGrid  x:Name="DataGridComnandirovka"
+                             AutoGenerateColumns="False"
+                             IsReadOnly="True"
+                             GridLinesVisibility="All"
+                             BorderThickness="2"
+                             Margin="30" 
+                             x:DataType="models:Passport">
+                      <DataGrid.Columns>
+                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
+                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Series}"/>
+                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Number}"/>
+                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Registration_Address}"/>
+                      </DataGrid.Columns>
+                  </DataGrid>
+              </StackPanel>
+          </TabItem>
+      </TabControl> 
+  </StackPanel>
 </Window>

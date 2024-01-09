@@ -45,20 +45,38 @@
 
                 <StackPanel Height="2" Background="Black" Margin="3"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <Image Width="50" Height="50"/>
-                        <Image Width="50" Height="50"/>
-                        <Image Width="50" Height="50"/>
+                       <Button x:Name="BtnAdd" Click="BtnAdd_OnClick"  Width="50">
+                               <Panel>
+                                       <Image Width="50" Height="50" Source="../Resursed/background0.jpg"/>
+                               </Panel>
+                       </Button>
+                        <Button x:Name="BtnEdit" Click="BtnEdit_OnClick">
+                                <Panel>
+                                        <Image Width="50" Height="50"/>
+                                </Panel>
+                        </Button>                   
+                        <Button x:Name="BtnDelet" Click="BtnDelet_OnClick">
+                                <Panel>
+                                        <Image Width="50" Height="50"/>
+                                </Panel>
+                        </Button>
                         <StackPanel Width="2" Background="Black" Margin="3"/>
-                        <Image Width="50" Height="50"/>
+                        <Button x:Name="BtnUpdateDataGrid" Click="BtnUpdateDataGrid_OnClick">
+                                <Panel>
+                                        <Image Width="50" Height="50"/>
+                                </Panel>
+                        </Button>
                         <StackPanel Width="2" Background="Black" Margin="3"/>
-                        <Image Width="50" Height="50"/>
-                        <StackPanel Width="2" Background="Black" Margin="3"/>
-                        <Image Width="50" Height="50"/>
+                        <Button x:Name="BtnOpenCart" Click="BtnOpenCart_OnClick">
+                                <Panel>
+                                        <Image Width="50" Height="50"/>
+                                </Panel>
+                        </Button>
                 </StackPanel>
                 <StackPanel Height="2" Background="Black" Margin="3"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <TextBox x:Name="SearchBox" Watermark="Поиск..." Width="300" Margin="10,0,10,0" />
-                        <Button Content="Сбросить" Click="Button_OnClick"/>
+                        <TextBox x:Name="TBoxSearchBox" TextChanged="TBoxSearchBox_OnTextChanged" Watermark="Поиск..." Width="300" Margin="10,0,10,0" />
+                        <Button Content="Сбросить" x:Name="BtnReset" Click="BtnReset_OnClick"/>
                 </StackPanel>
                 <StackPanel Height="2" Background="Black" Margin="3"/>
                 <Grid ColumnDefinitions="2*,0.1*,1*" ShowGridLines="True">

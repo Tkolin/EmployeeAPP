@@ -8,6 +8,8 @@ public class Employee
     
    public  string    First_Name { get; set; }
    public  string Last_Name { get; set; }
+   public  string Login { get; set; }
+   public  string Password { get; set; }
    public  string Patronymic { get; set; }
    public DateTime  Birth_Date { get; set; }
    public  string Phone_Number { get; set; }
@@ -16,6 +18,7 @@ public class Employee
    public  int   Gender_ID { get; set; }
    public  int  Family_Location_ID { get; set; }
    public  string  FamilyNameData { get; set; }
+   public  string  PassportAdress { get; set; }
    public  string  GenderNameData { get; set; }
    public  string  PassportNameData { get; set; }
 
@@ -33,9 +36,14 @@ public class Employee
       int passport_ID,
       int gender_ID,
       int family_Location_ID,
+      
       string familyNameData,
+      string passportAdress,
       string genderNameData,
-      string passportNameData
+      string passportNameData,
+      
+      string login,
+      string password
    )
    {
       ID = id;
@@ -49,7 +57,11 @@ public class Employee
       Gender_ID = gender_ID;
       Family_Location_ID = family_Location_ID;
       FamilyNameData = familyNameData;
+      PassportAdress = passportAdress;
       GenderNameData = genderNameData;
       PassportNameData = passportNameData;
+      Login = login;
+      Password = password;
+
    }
 }
