@@ -7,36 +7,34 @@
         
         MinHeight="900" MinWidth = "1600"  MaxHeight="900" MaxWidth = "1600" 
         x:Class="EmployeeAPP.PagesAndWindows.MainWindow"
-        Title="MainWindow">
+        Title="Главное окно">
         <StackPanel Background="Beige">
                 <DockPanel Background="Azure">
                         <Menu DockPanel.Dock="Top">
                                 <MenuItem Header="Файл">
                                  
-                                        <MenuItem Header="Настройки подключения"/>
+                                        <MenuItem Header="Настройки подключения" Click="MenuItem1_OnClick"/>
                                         <Separator/>
-                                        <MenuItem Header="Выход"/>
+                                        <MenuItem Header="Выход" Click="MenuItem2_OnClick"/>
 
                                 </MenuItem>
                                 <MenuItem Header="Сотрудник">
-                                        <MenuItem Header="Добавить"/>
-                                        <MenuItem Header="Редактировать"/>
-                                        <MenuItem Header="Редактировать"/>
+                                        <MenuItem Header="Добавить" Click="BtnAdd_OnClick"/>
+                                        <MenuItem Header="Редактировать" Click="BtnEdit_OnClick"/>
+                                        <MenuItem Header="Удалить" Click="BtnDelet_OnClick"/>
                                         <Separator/>
-                                        <MenuItem Header="Поиск"/>
-                                        <Separator/>
-                                        <MenuItem Header="Обновить"/>
+                                        <MenuItem Header="Обновить" Click="BtnUpdateDataGrid_OnClick"/>
                                 </MenuItem>
-                                <MenuItem Header="Справочнаики">
+                                <MenuItem Header="Справочнаики" Click="MenuItem3_OnClick">
 
                                 </MenuItem>
                                 <MenuItem Header="Отчёты">
-                                        <MenuItem Header="Личная карточка"/>
-                                        <MenuItem Header="Штатное расписание"/>
+                                        <MenuItem Header="Личная карточка" Click="BtnOpenCart_OnClick"/>
+                                        <MenuItem Header="Штатное расписание" IsVisible="False"/>
                                         <Separator/>
-                                        <MenuItem Header="Режим редактирования отчётов"/>
+                                        <MenuItem Header="Режим редактирования отчётов" IsVisible="False"/>
                                 </MenuItem>
-                                <MenuItem Header="Настройки">
+                                <MenuItem Header="Настройки" IsVisible="False">
                                         <MenuItem Header="Настройки таблицы"/>
                                 </MenuItem>
                         </Menu>
@@ -81,7 +79,7 @@
                 <StackPanel Height="2" Background="Black" Margin="3"/>
                 <Grid ColumnDefinitions="2*,0.1*,1*" ShowGridLines="True" Background="Beige">
                         <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" Text="Сотрудники"/>
-                        <DataGrid Grid.Column="0" x:Name="DataGridEmploy"
+                        <DataGrid Grid.Column="0" x:Name="DataGridEmploy" Height="650" Background="Coral"  SelectionChanged="DataGridEmploy_OnSelectionChanged"
                                   AutoGenerateColumns="False"
                                   IsReadOnly="True"
                                   GridLinesVisibility="All"
@@ -89,16 +87,16 @@
                                   Margin="30" 
                                   x:DataType="models:Employee">
                                 <DataGrid.Columns>
-                                        <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
-                                        <DataGridTextColumn Width="*" Header="Имя" Binding="{Binding First_Name}"/>
-                                        <DataGridTextColumn Width="*" Header="Фамилия" Binding="{Binding Last_Name}"/>
-                                        <DataGridTextColumn Width="*" Header="Отчество" Binding="{Binding Patronymic}"/>
-                                        <DataGridTextColumn Width="*" Header="Дата рождения" Binding="{Binding Birth_Date}"/>
-                                        <DataGridTextColumn Width="*" Header="Номер телефона" Binding="{Binding Phone_Number}"/>
-                                        <DataGridTextColumn Width="*" Header="ИНН" Binding="{Binding INN}"/>
-                                        <DataGridTextColumn Width="*" Header="Семейное положение" Binding="{Binding FamilyNameData}"/>
-                                        <DataGridTextColumn Width="*" Header="Пол" Binding="{Binding GenderNameData}"/>
-                                        <DataGridTextColumn Width="*" Header="Паспорт" Binding="{Binding PassportNameData}"/>
+                                        <DataGridTextColumn Width="1*" Header="ID" Binding="{Binding ID}"/>
+                                        <DataGridTextColumn Width="2*" Header="Имя" Binding="{Binding First_Name}"/>
+                                        <DataGridTextColumn Width="4*" Header="Фамилия" Binding="{Binding Last_Name}"/>
+                                        <DataGridTextColumn Width="3*" Header="Отчество" Binding="{Binding Patronymic}"/>
+                                        <DataGridTextColumn Width="3*" Header="Дата рождения" Binding="{Binding Birth_Date}"/>
+                                        <DataGridTextColumn Width="4*" Header="Номер телефона" Binding="{Binding Phone_Number}"/>
+                                        <DataGridTextColumn Width="5*" Header="ИНН" Binding="{Binding INN}"/>
+                                        <DataGridTextColumn Width="3*" Header="Семейное положение" Binding="{Binding FamilyNameData}"/>
+                                        <DataGridTextColumn Width="3*" Header="Пол" Binding="{Binding GenderNameData}"/>
+                                        <DataGridTextColumn Width="4*" Header="Паспорт" Binding="{Binding PassportNameData}"/>
                                 </DataGrid.Columns>
                         </DataGrid>
                         <TextBlock Grid.Column="2" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" Text="Информация в компании"/>
@@ -107,7 +105,7 @@
                                                  IsReadOnly="True"
                                                  GridLinesVisibility="All"
                                                  BorderThickness="2"
-                                                 Margin="30" 
+                                                 Margin="30"  Height="650" Background="Coral"
                                                  x:DataType="models:EmployeeToWork">
                                 <DataGrid.Columns>
                                         <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
@@ -120,5 +118,8 @@
                         </DataGrid>
                         
                 </Grid>
+                <DockPanel Background="Azure" Dock="Bottom" Height="100">
+                        <TextBlock x:Name="TBoxLog" FontStyle="Italic" HorizontalAlignment="Left"/>
+                </DockPanel>
         </StackPanel>
 </Window>

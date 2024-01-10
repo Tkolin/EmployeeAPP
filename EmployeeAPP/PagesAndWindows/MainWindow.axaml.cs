@@ -14,6 +14,8 @@ public partial class MainWindow : Window
 {
     private List<Employee> _DataEmployee { get; set; }
     private List<Employee> _ViewEmployee { get; set; }
+    private List<EmployeeToWork> _DataEmployeeToWork { get; set; }
+    private List<EmployeeToWork> _ViewEmployeeToWork { get; set; }
     private Employee _employeeAuth { get; set; }
     public MainWindow()
     {
@@ -24,27 +26,14 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         this._employeeAuth = _employeeAuth;
-        int? positionID = DataBaseManager.GetEmployeeToWork()
-            .Where(w => w.Employee_ID == _employeeAuth.ID)
-            .FirstOrDefault().Position_ID;
-        switch (positionID)
-        {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            default:
-                Close();
-                break;
-        }
-
         DownloadDataGrid();
     }
     public void DownloadDataGrid()
     {
         _DataEmployee = DataBaseManager.GetEmployee();
+        _DataEmployeeToWork = DataBaseManager.GetEmployeeToWork();
+        TBoxLog.Text = " | " + "Загружено сотрудников из базы: " + _DataEmployee.Count.ToString();
+        TBoxLog.Text += " | " + "Трудовых договоров из базы: " + _DataEmployeeToWork.Count.ToString();
         UpdateDataGrid();
     }
 
@@ -70,6 +59,7 @@ public partial class MainWindow : Window
                   c.GenderNameData.ToString().ToLower().Contains(TBoxSearchBox.Text.ToLower()) ||
                   c.PassportNameData.ToString().ToLower().Contains(TBoxSearchBox.Text.ToLower())
             ).ToList();
+        TBoxLog.Text = " | " + "Данных после фильтрации: " + _ViewEmployee.Count.ToString();
         DataGridEmploy.ItemsSource = _ViewEmployee;
     }
 
@@ -112,7 +102,8 @@ public partial class MainWindow : Window
 
     private void BtnAdd_OnClick(object? sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        EmployeeEditPage empEdWind = new EmployeeEditPage();
+        empEdWind.ShowDialog(this);
     }
 
     private void BtnOpenCart_OnClick(object? sender, RoutedEventArgs e)
@@ -122,6 +113,41 @@ public partial class MainWindow : Window
             MessageBoxManager.GetMessageBoxStandard("Ошибка", "Работник не выбран!", ButtonEnum.Ok).ShowAsync();
             return;
         }
+
+        CardReportEmployeeWindow cardWind = new CardReportEmployeeWindow(DataGridEmploy.SelectedItem as Employee);
+        cardWind.ShowDialog(this);
+    }
+
+    private void DataGridEmploy_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        if (DataGridEmploy.SelectedItem == null)
+        {
+            _ViewEmployeeToWork.Clear();
+            TBoxLog.Text += " | " + "Нет трудовых договоров для этого сотрудника";
+            return;
+        }
+
+        int employID = (DataGridEmploy.SelectedItem as Employee).ID;
+        _ViewEmployeeToWork = _DataEmployeeToWork.Where(etw => etw.Employee_ID == employID).ToList();
+        TBoxLog.Text = " | " + "Договоров " + employID+ " : " + _ViewEmployeeToWork.Count.ToString();
+        DataGridOrderToWork.ItemsSource = _ViewEmployeeToWork;
+        
+    }
+
+    private void MenuItem1_OnClick(object? sender, RoutedEventArgs e)
+    {
         throw new System.NotImplementedException();
     }
+
+    private void MenuItem2_OnClick(object? sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void MenuItem3_OnClick(object? sender, RoutedEventArgs e)
+    {
+        ReferencesPage refWind = new ReferencesPage();
+        refWind.ShowDialog(this);
+    }
+
 }

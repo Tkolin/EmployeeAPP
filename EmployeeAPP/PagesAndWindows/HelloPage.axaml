@@ -5,7 +5,7 @@
         mc:Ignorable="d" 
         MaxHeight="450" MaxWidth="450" MinHeight=" 450" MinWidth="450"
         x:Class="EmployeeAPP.HelloPage"
-        Title="EmployeeAPP">
+        Title="Авторизация">
         <Grid Background="Beige" Margin="5">
     
         
@@ -20,9 +20,9 @@
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center"
                                     VerticalAlignment="Center" Width="200" >
                                 <TextBlock>Логин</TextBlock>
-                                <TextBox x:Name="TBoxLogin" Text="admin"/>
+                                <TextBox x:Name="TBoxLogin" Text="login1"/>
                                 <TextBlock>Пароль</TextBlock>
-                                <TextBox x:Name="TBoxPassword" Text="admin"/>
+                                <TextBox x:Name="TBoxPassword" Text="password1"/>
                         </StackPanel>
                         <Button x:Name="BtnAuth" Margin="4" Width="200" 
                                 HorizontalContentAlignment="Center" HorizontalAlignment="Center"

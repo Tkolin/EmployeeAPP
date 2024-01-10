@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using EmployeeAPP.Model;
 using Excel = Microsoft.Office.Interop.Excel;
 using Window = Avalonia.Controls.Window;
 
@@ -9,9 +10,11 @@ namespace EmployeeAPP.PagesAndWindows;
 
 public partial class CardReportEmployeeWindow : Window
 {
-    public CardReportEmployeeWindow()
+    private Employee _employee { get; set; }
+    public CardReportEmployeeWindow(Employee employee)
     {
         InitializeComponent();
+        _employee = employee;
     }
 
     private void BtnCrateCard_OnClick(object? sender, RoutedEventArgs e)

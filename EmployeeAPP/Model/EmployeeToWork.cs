@@ -1,4 +1,6 @@
-﻿namespace EmployeeAPP.Model;
+﻿using System.Linq;
+
+namespace EmployeeAPP.Model;
 
 public class EmployeeToWork
 {
@@ -25,7 +27,6 @@ public class EmployeeToWork
         int employmentOrderId,
         string positionData,
         string unitData,
-        string dsmissalnData,
         string employmentOrderData
     )
     {
@@ -34,10 +35,12 @@ public class EmployeeToWork
         Position_ID = positionId;
         Unit_ID = unitId;
         Dismissal_ID = dismissalId;
+        if (dismissalId == 0)
+            DismissalnData = "Нет";
         employment_order_ID = employmentOrderId;
-        PositionData =positionData;
-            UnitData=unitData;
-        DismissalnData=dsmissalnData;
-            EmploymentOrderData=employmentOrderData;
+        PositionData =positionData ?? string.Empty;
+        UnitData=unitData ?? string.Empty;
+        DismissalnData = DataBaseManager.GetDismissal().Where(d=>d.ID == Dismissal_ID).First().Date.ToString("dd/MM/yyyy");
+        EmploymentOrderData=employmentOrderData ?? string.Empty;
     }
 }

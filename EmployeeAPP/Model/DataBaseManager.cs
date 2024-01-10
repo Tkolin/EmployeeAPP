@@ -127,12 +127,12 @@ public class DataBaseManager
             reader.GetInt32("Gender_ID"),
             reader.GetInt32("Family_Location_ID"),
             
-            reader.GetString("fam.Name"),
+            reader.GetString("Name"),
             reader.GetString("registration_address"),
-            reader.GetString("gen.Name"),
+            reader.GetString("Name"),
         reader.GetString("Passport_Series") + " " + reader.GetString("Passport_number"),
             
-            reader.GetString("User"),
+            reader.GetString("Login"),
             reader.GetString("Password")
 
         ));
@@ -145,6 +145,7 @@ public class DataBaseManager
                      INNER JOIN unit unit ON e.Unit_ID = unit.ID
                      INNER JOIN dismissal dis ON e.Dismissal_ID = dis.ID
                      INNER JOIN employment_order empOrd ON e.Employment_order_ID = empOrd.ID";
+        
         return GetData(query, reader => new EmployeeToWork(
             reader.GetInt32("ID"),
             reader.GetInt32("Employee_ID"),
@@ -153,10 +154,9 @@ public class DataBaseManager
             reader.GetInt32("Dismissal_ID"),
             reader.GetInt32("Employment_order_ID"),
             
-            reader.GetString("pos.Name"),
-            reader.GetString("unit.Name"),
-            reader.GetString("dis.Date"),
-            reader.GetString("empOrd.Date") + " " +  reader.GetString("empOrd.Contract_Number") + " " +  reader.GetString("empOrd.Date_Employment") 
+            reader.GetString("Name"),
+            reader.GetString("Name"),
+            reader.GetDateTime("Date") + " " +  reader.GetInt32("Contract_Number") + " " +  reader.GetDateTime("Date_Employment") 
         ));
     }
     public static List<EmploymentOrder> GetEmploymentOrder()

@@ -38,9 +38,6 @@
       <None Update="Resursed\database_connect_2324.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Resursed\background0.jpg">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
       <None Update="Resursed\database_delete_7487.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>

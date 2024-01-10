@@ -3,19 +3,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        MinHeight="800" MinWidth="1200" MaxHeight="800" MaxWidth="1200"
+        MinHeight="600" MinWidth="1300" MaxHeight="600" MaxWidth="1300"
         x:Class="EmployeeAPP.PagesAndWindows.ReferencesPage"
         xmlns:models="clr-namespace:EmployeeAPP.Model"
         Title="Справочники">
   <StackPanel Background="Beige" Margin="5">
-      <TabControl Margin="5" Background="Azure">
+      <TabControl Margin="5" Background="Azure"  TabStripPlacement="Left" BorderBrush="Black" BorderThickness="2">
 
-          <TabItem Header="Отделы" >
-             <StackPanel>
+          <TabItem Header="Отделы" FontSize="16" FontWeight="DemiBold" Padding="2"  >
+             
+              <StackPanel >
                 
                  <DataGrid  x:Name="DataGridUnit"
                             AutoGenerateColumns="False"
-                            IsReadOnly="True"
+                            IsReadOnly="True" Background="Coral" Height="550" Width="980"
                             GridLinesVisibility="All"
                             BorderThickness="2"
                             Margin="30" 
@@ -29,11 +30,11 @@
 
     
           </TabItem>
-          <TabItem Header="Должности">
+          <TabItem Header="Должности" FontSize="16" FontWeight="DemiBold" Padding="2" >
               <StackPanel>
                  <DataGrid  x:Name="DataGridPosition"
                              AutoGenerateColumns="False"
-                             IsReadOnly="True"
+                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
                              GridLinesVisibility="All"
                              BorderThickness="2"
                              Margin="30" 
@@ -45,11 +46,11 @@
                   </DataGrid>
               </StackPanel>
           </TabItem>
-          <TabItem Header="Договора увольнения">
+          <TabItem Header="Договора увольнения" FontSize="16" FontWeight="DemiBold" Padding="2" >
               <StackPanel>
                   <DataGrid  x:Name="DataGridDismise"
-                             AutoGenerateColumns="False"
-                             IsReadOnly="True"
+                             AutoGenerateColumns="False" Height="550" Width="980"
+                             IsReadOnly="True" Background="Coral" 
                              GridLinesVisibility="All"
                              BorderThickness="2"
                              Margin="30" 
@@ -61,11 +62,11 @@
                   </DataGrid>
               </StackPanel>
           </TabItem>
-          <TabItem Header="Договора приёма на работу">
+          <TabItem Header="Договора приёма на работу" FontSize="16" FontWeight="DemiBold" Padding="2" >
               <StackPanel>
                   <DataGrid  x:Name="DataGridOrderToWork"
                              AutoGenerateColumns="False"
-                             IsReadOnly="True"
+                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
                              GridLinesVisibility="All"
                              BorderThickness="2"
                              Margin="30" 
@@ -79,11 +80,11 @@
                   </DataGrid>
               </StackPanel>
           </TabItem>
-          <TabItem Header="Паспорта">
+          <TabItem Header="Паспорта" FontSize="16" FontWeight="DemiBold" Padding="2" >
               <StackPanel>
                   <DataGrid  x:Name="DataGridPassport"
                              AutoGenerateColumns="False"
-                             IsReadOnly="True"
+                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
                              GridLinesVisibility="All"
                              BorderThickness="2"
                              Margin="30" 

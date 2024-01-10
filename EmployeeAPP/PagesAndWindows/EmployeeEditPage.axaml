@@ -3,15 +3,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" 
-        MinHeight="1600" MinWidth = "900"  MaxHeight="1600" MaxWidth = "900" 
+        MinHeight="600" MinWidth="1300" MaxHeight="600" MaxWidth="1300"
         x:Class="EmployeeAPP.PagesAndWindows.EmployeeEditPage"
         xmlns:models="clr-namespace:EmployeeAPP.Model"
-        Title="EmployeeEditPage">
+        Title="Редактирование сотрудника">
  <StackPanel Background="Azure">
-      <TabControl Margin="5">
-          <TabItem Header="Основные данные">
-              
-              <Grid ColumnDefinitions="2*,7*" RowDefinitions="50,50,50,50,50,50,50,50,50,50,50,50,50">
+      <TabControl Margin="5" TabStripPlacement="Left">
+          <TabItem Header="Основные данные" FontSize="16" FontWeight="DemiBold" Padding="2" >
+              <Border BorderBrush="Black" BorderThickness="3" Background="Aquamarine">
+              <Grid ColumnDefinitions="3*,7*,3*,7*" RowDefinitions="50,50,50,50,50,50,50,50,50,50,50,50,50">
                   
                   <TextBlock Grid.Column="0" Grid.Row="0" Text="Код: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 <TextBox Grid.Column="1" Grid.Row="0" x:Name="TBoxID" Margin="10"/>
@@ -31,35 +31,35 @@
                 <TextBlock Grid.Column="0" Grid.Row="5" Text="Семейное положение: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 <TextBox Grid.Column="1" Grid.Row="5" x:Name="CBoxFamily" Margin="10"/>
                 
-                <TextBlock Grid.Column="0" Grid.Row="6" Text="Дата рождения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="6" x:Name="DPicerDateBirth" Margin="10"/>
+                <TextBlock Grid.Column="2" Grid.Row="0" Text="Дата рождения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="3" Grid.Row="0" x:Name="DPicerDateBirth" Margin="10"/>
                 
-                <TextBlock Grid.Column="0" Grid.Row="7" Text="Место рождения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="7" x:Name="TBoxPointStart" Margin="10"/>
+                <TextBlock Grid.Column="2" Grid.Row="1" Text="Место рождения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="3" Grid.Row="1" x:Name="TBoxPointStart" Margin="10"/>
                 
-                <TextBlock Grid.Column="0" Grid.Row="8" Text="Образование: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="8" x:Name="TBoxEducation" Margin="10"/>
+                <TextBlock Grid.Column="2" Grid.Row="2" Text="Образование: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="3" Grid.Row="2" x:Name="TBoxEducation" Margin="10"/>
                 
-                <TextBlock Grid.Column="0" Grid.Row="9" Text="Специальность: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="9" x:Name="CBoxPosition" Margin="10"/>
+                <TextBlock Grid.Column="2" Grid.Row="3" Text="Специальность: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="3" Grid.Row="3" x:Name="CBoxPosition" Margin="10"/>
                 
-                <TextBlock Grid.Column="0" Grid.Row="10" Text="Телефон: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="10" x:Name="TBoxPhoneNumber" Margin="10"/>
+                <TextBlock Grid.Column="2" Grid.Row="4" Text="Телефон: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="3" Grid.Row="4" x:Name="TBoxPhoneNumber" Margin="10"/>
                 
-                <TextBlock Grid.Column="0" Grid.Row="11" Text="Адресс регистранции: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="11" x:Name="TBoxAdressReg" Margin="10"/>
-                
-                <TextBlock Grid.Column="0" Grid.Row="12" Text="Адресс проживания: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="12" x:Name="TBoxAdressPos" Margin="10"/>
+                <TextBlock Grid.Column="2" Grid.Row="5" Text="Адресс регистранции: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="3" Grid.Row="5" x:Name="TBoxAdressReg" Margin="10"/>
+
+                <TextBlock Grid.Column="2" Grid.Row="6" Text="Адресс проживания: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="3" Grid.Row="6" x:Name="TBoxAdressPos" Margin="10"/>
              </Grid>
 
-    
+              </Border>
           </TabItem>
-          <TabItem Header="Докуменгты">
+          <TabItem Header="Документы" FontSize="16" FontWeight="DemiBold" Padding="2" >
               <StackPanel>
                  <DataGrid  x:Name="DataGridPosition"
                              AutoGenerateColumns="False"
-                             IsReadOnly="True"
+                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
                              GridLinesVisibility="All"
                              BorderThickness="2"
                              Margin="30" 
@@ -71,11 +71,11 @@
                   </DataGrid>
               </StackPanel>
           </TabItem>
-          <TabItem Header="Трудоустройство">
+          <TabItem Header="Трудоустройство" FontSize="16" FontWeight="DemiBold" Padding="2" >
               <StackPanel>
                   <DataGrid  x:Name="DataGridDismise"
                              AutoGenerateColumns="False"
-                             IsReadOnly="True"
+                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
                              GridLinesVisibility="All"
                              BorderThickness="2"
                              Margin="30" 
@@ -87,11 +87,11 @@
                   </DataGrid>
               </StackPanel>
           </TabItem>
-          <TabItem Header="Увольнение">
+          <TabItem Header="Увольнение" FontSize="16" FontWeight="DemiBold" Padding="2" >
               <StackPanel>
                   <DataGrid  x:Name="DataGridOrderToWork"
                              AutoGenerateColumns="False"
-                             IsReadOnly="True"
+                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
                              GridLinesVisibility="All"
                              BorderThickness="2"
                              Margin="30" 
@@ -105,11 +105,11 @@
                   </DataGrid>
               </StackPanel>
           </TabItem>
-          <TabItem Header="Стаж">
+          <TabItem Header="Стаж" FontSize="16" FontWeight="DemiBold" Padding="2" >
               <StackPanel>
                   <DataGrid  x:Name="DataGridPassport"
                              AutoGenerateColumns="False"
-                             IsReadOnly="True"
+                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
                              GridLinesVisibility="All"
                              BorderThickness="2"
                              Margin="30" 
@@ -123,11 +123,11 @@
                   </DataGrid>
               </StackPanel>
           </TabItem>
-          <TabItem Header="Семья">
+          <TabItem Header="Семья" FontSize="16" FontWeight="DemiBold" Padding="2" >
               <StackPanel>
                   <DataGrid  x:Name="DataGridFamily"
                              AutoGenerateColumns="False"
-                             IsReadOnly="True"
+                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
                              GridLinesVisibility="All"
                              BorderThickness="2"
                              Margin="30" 
@@ -141,11 +141,11 @@
                   </DataGrid>
               </StackPanel>
           </TabItem>
-          <TabItem Header="Отпуск">
+          <TabItem Header="Отпуск" FontSize="16" FontWeight="DemiBold" Padding="2" >
               <StackPanel>
                   <DataGrid  x:Name="DataGridOtpusk"
                              AutoGenerateColumns="False"
-                             IsReadOnly="True"
+                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
                              GridLinesVisibility="All"
                              BorderThickness="2"
                              Margin="30" 
@@ -159,11 +159,11 @@
                   </DataGrid>
               </StackPanel>
           </TabItem>
-          <TabItem Header="Командировка">
+          <TabItem Header="Командировка" FontSize="16" FontWeight="DemiBold" Padding="2" >
               <StackPanel>
                   <DataGrid  x:Name="DataGridComnandirovka"
                              AutoGenerateColumns="False"
-                             IsReadOnly="True"
+                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
                              GridLinesVisibility="All"
                              BorderThickness="2"
                              Margin="30" 
