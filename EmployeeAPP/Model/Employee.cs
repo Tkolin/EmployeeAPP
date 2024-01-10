@@ -6,12 +6,13 @@ public class Employee
 {
    public int    ID  { get; set; }
     
-   public  string    First_Name { get; set; }
+   public  string  First_Name { get; set; }
    public  string Last_Name { get; set; }
    public  string Login { get; set; }
    public  string Password { get; set; }
    public  string Patronymic { get; set; }
    public DateTime  Birth_Date { get; set; }
+   public  string Birth_Adress { get; set; }
    public  string Phone_Number { get; set; }
    public   string INN { get; set; }
    public   int  Passport_ID  { get; set; }
@@ -31,6 +32,7 @@ public class Employee
       string last_Name,
       string patronymic,
       DateTime birth_Date,
+      string birth_Adress,
       string phone_Number,
       string inn,
       int passport_ID,
@@ -51,6 +53,7 @@ public class Employee
       Last_Name = last_Name;
       Patronymic = patronymic;
       Birth_Date = birth_Date;
+      Birth_Adress = birth_Adress;
       Phone_Number = phone_Number;
       INN = inn;
       Passport_ID = passport_ID;

@@ -105,7 +105,8 @@ public class DataBaseManager
         string query = "SELECT * FROM dismissal";
         return GetData(query, reader => new Dismissal(
             reader.GetInt32("ID"),
-            reader.GetDateTime("Date")
+            reader.GetDateTime("Date"),
+            reader.GetDateTime("Date_Dismise")
         ));
     }
     public static List<Employee> GetEmployee()
@@ -121,6 +122,7 @@ public class DataBaseManager
             reader.GetString("Last_Name"),
             reader.GetString("Patronymic"),
             reader.GetDateTime("Birth_Date"),
+            reader.GetString("Birth_Adress"),
             reader.GetString("Phone_Number"),
             reader.GetString("INN"),
             reader.GetInt32("Passport_ID"),
@@ -192,7 +194,8 @@ public class DataBaseManager
             reader.GetInt32("ID"),
             reader.GetString("Passport_Series"),
             reader.GetString("Passport_number"),
-            reader.GetString("registration_address")
+            reader.GetString("registration_address"),
+            reader.GetString("positions_address")
         ));
     }
     public static List<Position> GetPosition()

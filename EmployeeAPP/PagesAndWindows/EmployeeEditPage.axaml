@@ -9,12 +9,12 @@
         Title="Редактирование сотрудника">
  <StackPanel Background="Azure">
       <TabControl Margin="5" TabStripPlacement="Left">
-          <TabItem Header="Основные данные" FontSize="16" FontWeight="DemiBold" Padding="2" >
+  <TabItem Header="Основные данные" FontSize="16" FontWeight="DemiBold" Padding="2" >
               <Border BorderBrush="Black" BorderThickness="3" Background="Aquamarine">
               <Grid ColumnDefinitions="3*,7*,3*,7*" RowDefinitions="50,50,50,50,50,50,50,50,50,50,50,50,50">
                   
                   <TextBlock Grid.Column="0" Grid.Row="0" Text="Код: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="0" x:Name="TBoxID" Margin="10"/>
+                <TextBox Grid.Column="1" Grid.Row="0" x:Name="TBoxID" Margin="10" Width="10" HorizontalAlignment="Left" IsEnabled="False"/>
                 
                 <TextBlock Grid.Column="0" Grid.Row="1" Text="Фамилия: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 <TextBox Grid.Column="1" Grid.Row="1" x:Name="TBoxLastName" Margin="10"/>
@@ -26,23 +26,18 @@
                 <TextBox Grid.Column="1" Grid.Row="3" x:Name="TBoxPatronymic" Margin="10"/>
                 
                 <TextBlock Grid.Column="0" Grid.Row="4" Text="Пол: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="4" x:Name="CBoxGender" Margin="10"/>
+                <ComboBox Grid.Column="1" Grid.Row="4" x:Name="CBoxGender" Margin="10" Width="370"/>
                 
                 <TextBlock Grid.Column="0" Grid.Row="5" Text="Семейное положение: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="5" x:Name="CBoxFamily" Margin="10"/>
+                <ComboBox Grid.Column="1" Grid.Row="5" x:Name="CBoxFamily" Margin="10" Width="370"/>
                 
                 <TextBlock Grid.Column="2" Grid.Row="0" Text="Дата рождения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="3" Grid.Row="0" x:Name="DPicerDateBirth" Margin="10"/>
+                <DatePicker Grid.Column="3" Grid.Row="0" x:Name="DPicerDateBirth" Margin="10"/>
                 
                 <TextBlock Grid.Column="2" Grid.Row="1" Text="Место рождения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 <TextBox Grid.Column="3" Grid.Row="1" x:Name="TBoxPointStart" Margin="10"/>
-                
-                <TextBlock Grid.Column="2" Grid.Row="2" Text="Образование: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="3" Grid.Row="2" x:Name="TBoxEducation" Margin="10"/>
-                
-                <TextBlock Grid.Column="2" Grid.Row="3" Text="Специальность: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="3" Grid.Row="3" x:Name="CBoxPosition" Margin="10"/>
-                
+                  
+                  
                 <TextBlock Grid.Column="2" Grid.Row="4" Text="Телефон: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 <TextBox Grid.Column="3" Grid.Row="4" x:Name="TBoxPhoneNumber" Margin="10"/>
                 
@@ -51,132 +46,89 @@
 
                 <TextBlock Grid.Column="2" Grid.Row="6" Text="Адресс проживания: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 <TextBox Grid.Column="3" Grid.Row="6" x:Name="TBoxAdressPos" Margin="10"/>
+                  <TextBlock Grid.Column="2" Grid.Row="6" Text="Серия паспорта: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                  <TextBox Grid.Column="3" Grid.Row="6" x:Name="TBoxPassportSeria" Margin="10"/>
+                  <TextBlock Grid.Column="2" Grid.Row="6" Text="Номер паспорта: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                  <TextBox Grid.Column="3" Grid.Row="6" x:Name="TBoxPassportNumber" Margin="10"/>
              </Grid>
 
               </Border>
           </TabItem>
-          <TabItem Header="Документы" FontSize="16" FontWeight="DemiBold" Padding="2" >
-              <StackPanel>
-                 <DataGrid  x:Name="DataGridPosition"
-                             AutoGenerateColumns="False"
-                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
-                             GridLinesVisibility="All"
-                             BorderThickness="2"
-                             Margin="30" 
-                             x:DataType="models:Position">
-                      <DataGrid.Columns>
-                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
-                          <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Name}"/>
-                      </DataGrid.Columns>
-                  </DataGrid>
-              </StackPanel>
-          </TabItem>
-          <TabItem Header="Трудоустройство" FontSize="16" FontWeight="DemiBold" Padding="2" >
-              <StackPanel>
-                  <DataGrid  x:Name="DataGridDismise"
-                             AutoGenerateColumns="False"
-                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
-                             GridLinesVisibility="All"
-                             BorderThickness="2"
-                             Margin="30" 
-                             x:DataType="models:Dismissal">
-                      <DataGrid.Columns>
-                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
-                          <DataGridTextColumn Width="*" Header="Дата" Binding="{Binding Date}"/>
-                      </DataGrid.Columns>
-                  </DataGrid>
-              </StackPanel>
-          </TabItem>
-          <TabItem Header="Увольнение" FontSize="16" FontWeight="DemiBold" Padding="2" >
-              <StackPanel>
-                  <DataGrid  x:Name="DataGridOrderToWork"
-                             AutoGenerateColumns="False"
-                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
-                             GridLinesVisibility="All"
-                             BorderThickness="2"
-                             Margin="30" 
-                             x:DataType="models:EmploymentOrder">
-                      <DataGrid.Columns>
-                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
-                          <DataGridTextColumn Width="*" Header="Дата документа" Binding="{Binding Date}"/>
-                          <DataGridTextColumn Width="*" Header="Номер договора" Binding="{Binding Contract_Number}"/>
-                          <DataGridTextColumn Width="*" Header="Дата приёма на работу" Binding="{Binding Date_Employment}"/>
-                      </DataGrid.Columns>
-                  </DataGrid>
-              </StackPanel>
-          </TabItem>
-          <TabItem Header="Стаж" FontSize="16" FontWeight="DemiBold" Padding="2" >
-              <StackPanel>
-                  <DataGrid  x:Name="DataGridPassport"
-                             AutoGenerateColumns="False"
-                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
-                             GridLinesVisibility="All"
-                             BorderThickness="2"
-                             Margin="30" 
-                             x:DataType="models:Passport">
-                      <DataGrid.Columns>
-                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
-                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Series}"/>
-                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Number}"/>
-                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Registration_Address}"/>
-                      </DataGrid.Columns>
-                  </DataGrid>
-              </StackPanel>
-          </TabItem>
-          <TabItem Header="Семья" FontSize="16" FontWeight="DemiBold" Padding="2" >
-              <StackPanel>
-                  <DataGrid  x:Name="DataGridFamily"
-                             AutoGenerateColumns="False"
-                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
-                             GridLinesVisibility="All"
-                             BorderThickness="2"
-                             Margin="30" 
-                             x:DataType="models:Passport">
-                      <DataGrid.Columns>
-                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
-                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Series}"/>
-                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Number}"/>
-                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Registration_Address}"/>
-                      </DataGrid.Columns>
-                  </DataGrid>
-              </StackPanel>
-          </TabItem>
-          <TabItem Header="Отпуск" FontSize="16" FontWeight="DemiBold" Padding="2" >
-              <StackPanel>
-                  <DataGrid  x:Name="DataGridOtpusk"
-                             AutoGenerateColumns="False"
-                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
-                             GridLinesVisibility="All"
-                             BorderThickness="2"
-                             Margin="30" 
-                             x:DataType="models:Passport">
-                      <DataGrid.Columns>
-                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
-                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Series}"/>
-                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Number}"/>
-                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Registration_Address}"/>
-                      </DataGrid.Columns>
-                  </DataGrid>
-              </StackPanel>
-          </TabItem>
-          <TabItem Header="Командировка" FontSize="16" FontWeight="DemiBold" Padding="2" >
-              <StackPanel>
-                  <DataGrid  x:Name="DataGridComnandirovka"
-                             AutoGenerateColumns="False"
-                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
-                             GridLinesVisibility="All"
-                             BorderThickness="2"
-                             Margin="30" 
-                             x:DataType="models:Passport">
-                      <DataGrid.Columns>
-                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
-                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Series}"/>
-                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Number}"/>
-                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Registration_Address}"/>
-                      </DataGrid.Columns>
-                  </DataGrid>
-              </StackPanel>
-          </TabItem>
+          <TabItem Header="Трудовые документы" FontSize="16" FontWeight="DemiBold" Padding="2" >
+                  <Grid ColumnDefinitions="*,*" RowDefinitions="3*,1*" ShowGridLines="True">
+                     <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="*,*">
+                          <DataGrid   x:Name="DataGridEmployeeToWork"
+                                    AutoGenerateColumns="False"
+                                    IsReadOnly="True" Background="Coral" 
+                                    GridLinesVisibility="All"
+                                    BorderThickness="4"  Height="200"
+                                    x:DataType="models:EmployeeToWork">
+                              <DataGrid.Columns>
+                                  <DataGridTextColumn Width="2*" Header="ID" Binding="{Binding ID}"/>
+                                  <DataGridTextColumn Width="2*" Header="Должность" Binding="{Binding PositionData}"/>
+                                  <DataGridTextColumn Width="2*" Header="Отдел" Binding="{Binding UnitData}"/>
+                                  <DataGridTextColumn Width="4*" Header="Номер документа об увольнения" Binding="{Binding Dismissal_ID}"/>
+                                  <DataGridTextColumn Width="4*" Header="Номер трудового договора" Binding="{Binding employment_order_ID}"/>
+                              </DataGrid.Columns>
+                          </DataGrid>
+                         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="3">
+                             <Button  HorizontalAlignment="Center" x:Name="BtnAddEmpToWork" Content="Добавить" Click="BtnAddEmpToWork_OnClick"/>
+                             <Button  HorizontalAlignment="Center" x:Name="BtnResetEmpToWork" Content="Отменить" Click="BtnResetEmpToWork_OnClick"/>
+                         </StackPanel>
+                     </Grid>
+                      <Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*,*" >
+
+                         
+                          <TextBlock Grid.Column="0" Grid.Row="1" Text="Должность: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <ComboBox Grid.Column="1" Grid.Row="1" x:Name="CBoxPosition" Margin="10" Width="160"/>
+                          <Button Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" x:Name="BtnAddPosition" Content="Добавить" />
+                          
+                          <TextBlock Grid.Column="0" Grid.Row="2" Text="Отдел: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <ComboBox Grid.Column="1" Grid.Row="2" x:Name="CBoxUnit" Margin="10" Width="160"/>
+                          <Button Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" x:Name="BtnAddUnit" Content="Добавить"/>
+                          
+                          <TextBlock Grid.Column="0" Grid.Row="3" Text="Документа об увольнении: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <ComboBox Grid.Column="1" Grid.Row="3" x:Name="CBoxOrderDismish" Margin="10" Width="160"/>
+                          <Button Grid.Column="2" Grid.Row="3"  HorizontalAlignment="Left" x:Name="BtnAddOrderDismish" Content="Добавить"/>
+                          
+                          <TextBlock Grid.Column="0" Grid.Row="4" Text="Трудового договор: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <ComboBox Grid.Column="1" Grid.Row="4" x:Name="CBoxOrderWork" Margin="10" Width="160"/>
+                          <Button Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" x:Name="BtnAddOrderWork" Content="Добавить"/>
+                      </Grid>
+                      <Grid Grid.Row="1" Grid.Column="0" ColumnDefinitions="1*,3*" RowDefinitions="*,*,*,*,*,*">
+                          <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Width="300" Text="Редактирование увольнения" FontWeight="ExtraBold" FontSize="20" Margin="10"/>
+                         
+                          <TextBlock Grid.Column="0" Grid.Row="1" Text="ID:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <TextBox Grid.Column="1" Grid.Row="1" x:Name="TBOxWorkOrderID" Margin="10" Width="20" HorizontalAlignment="Left" IsEnabled="False"/>
+                          
+                          <TextBlock Grid.Column="0" Grid.Row="2" Text="Дата документа: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <DatePicker Grid.Column="1" Grid.Row="2" x:Name="TBOxWorkOrderDate" Margin="10"  HorizontalAlignment="Left"/>
+                          
+                          <TextBlock Grid.Column="0" Grid.Row="3" Text="Дата приёма: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <DatePicker Grid.Column="1" Grid.Row="3" x:Name="TBOxWorkOrderDatemploy" Margin="10"  HorizontalAlignment="Left"/>
+                          
+                          <TextBlock Grid.Column="0" Grid.Row="4" Text="Номер контракта: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <TextBox Grid.Column="1" Grid.Row="4" x:Name="TBOxWorkOrderContractNumber" Margin="10" Width="150"  HorizontalAlignment="Left"/>
+                          
+                          <Button Grid.Column="1" Grid.Row="5" x:Name="BtnSaveWorkOrder" Content="Сохранить" Margin="10"  HorizontalAlignment="Center"/>
+                      </Grid>
+                      <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="1*,3*" RowDefinitions="*,*,*,*,*,*">
+                          <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Width="300" Text="Редактирование договора" FontWeight="ExtraBold" FontSize="20" Margin="10"/>
+                         
+                          <TextBlock Grid.Column="0" Grid.Row="1" Text="ID:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <TextBox Grid.Column="1" Grid.Row="1" x:Name="TBOxDismiseOrderID" Margin="10" Width="20" HorizontalAlignment="Left" IsEnabled="False"/>
+                          
+                          <TextBlock Grid.Column="0" Grid.Row="2" Text="Дата документа: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <DatePicker Grid.Column="1" Grid.Row="2" x:Name="TBOxDismiseDate" Margin="10"  HorizontalAlignment="Left"/>
+                          
+                          <TextBlock Grid.Column="0" Grid.Row="3" Text="Дата увольнения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <DatePicker Grid.Column="1" Grid.Row="3" x:Name="TBOxDismiseDateDismise" Margin="10"  HorizontalAlignment="Left"/>
+                          
+                          <Button Grid.Column="1" Grid.Row="5" x:Name="BtnSaveDismision" Content="Сохранить" Margin="10"  HorizontalAlignment="Center"/>
+                      </Grid>
+                  </Grid>
+              </TabItem>
+                  
       </TabControl> 
   </StackPanel>
 </Window>
