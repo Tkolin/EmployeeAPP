@@ -97,7 +97,9 @@ public partial class MainWindow : Window
             MessageBoxManager.GetMessageBoxStandard("Ошибка", "Работник не выбран!", ButtonEnum.Ok).ShowAsync();
             return;
         }
-        throw new System.NotImplementedException();
+
+        EmployeeEditPage empEdiWind = new EmployeeEditPage(DataGridEmploy.SelectedItem as Employee);
+        empEdiWind.ShowDialog(this);
     }
 
     private void BtnAdd_OnClick(object? sender, RoutedEventArgs e)

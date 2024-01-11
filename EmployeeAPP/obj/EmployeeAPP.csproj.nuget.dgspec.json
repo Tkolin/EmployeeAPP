@@ -66,13 +66,13 @@
               "target": "Package",
               "version": "[11.0.2, )"
             },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[7.0.6, )"
+            },
             "MessageBox.Avalonia": {
               "target": "Package",
               "version": "[3.0.0, )"
-            },
-            "Microsoft.Office.Interop.Excel": {
-              "target": "Package",
-              "version": "[15.0.4795.1001, )"
             },
             "MySqlConnector": {
               "target": "Package",

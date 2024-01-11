@@ -74,7 +74,6 @@
                       <DataGrid.Columns>
                           <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
                           <DataGridTextColumn Width="*" Header="Дата документа" Binding="{Binding Date}"/>
-                          <DataGridTextColumn Width="*" Header="Номер договора" Binding="{Binding Contract_Number}"/>
                           <DataGridTextColumn Width="*" Header="Дата приёма на работу" Binding="{Binding Date_Employment}"/>
                       </DataGrid.Columns>
                   </DataGrid>

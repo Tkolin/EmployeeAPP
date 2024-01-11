@@ -32,3 +32,6 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/Grigoriy/Pictures/EmployeeAPP/EmployeeAPP/PagesAndWindows/ReferencesPage.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Grigoriy/Pictures/EmployeeAPP/EmployeeAPP/PagesAndWindows/T2Form.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

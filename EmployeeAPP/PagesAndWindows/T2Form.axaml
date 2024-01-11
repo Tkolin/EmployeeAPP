@@ -1,0 +1,68 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             MinHeight="876" MinWidth = "620"  
+             x:Class="EmployeeAPP.PagesAndWindows.T2Form">
+            <Grid Background="Azure"
+                  RowDefinitions="
+                  1*,1*,1*,1*,1*,1*,1*,1*,1*,1*,
+                  1*,1*,1*,1*,1*,1*,1*,1*,1*,1*,
+                  1*,1*,1*,1*"
+                  ColumnDefinitions="
+                  1*,1*,1*,1*,1*,1*,1*,1*" ShowGridLines="True">
+                
+                <TextBlock Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="2" Text="Унифицированная форма № Т-2"/>
+                <TextBlock Grid.Column="6" Grid.Row="1" Grid.ColumnSpan="2" Text="Утверждена постановлением Госкомстата РФ" />
+                <TextBlock Grid.Column="6" Grid.Row="2" Grid.ColumnSpan="2" Text="от 5 января 2004 г. N 1"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="6"/>
+                <TextBlock Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="6"/>
+                           
+                <TextBlock Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="7"/>
+                <TextBlock Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="6"/>
+                <TextBlock Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="6"  TextAlignment="Center"/>
+                <TextBlock Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="7"/>
+                <TextBlock Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="7"/>
+                
+                <TextBlock Grid.Column="3" Grid.Row="9" Grid.ColumnSpan="4" Text="ЛИЧНАЯ КАРТОЧКА" FontWeight="Bold"/>
+                <TextBlock Grid.Column="3" Grid.Row="10" Grid.ColumnSpan="4" Text="работника" FontWeight="Bold"/>
+                <TextBlock Grid.Column="3" Grid.Row="11" Grid.ColumnSpan="4"  Text="I. ОБЩИЕ СВЕДЕНИЯ" FontWeight="Bold"/>
+                
+                <TextBlock  Grid.Column="0" Grid.Row="12" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+                <TextBlock Grid.Column="0" Grid.Row="12" />
+                <TextBlock Grid.Column="0" Grid.Row="12" />
+                <TextBlock Grid.Column="0" Grid.Row="13" />
+                <TextBlock Grid.Column="0" Grid.Row="13" />
+                
+                <TextBlock Grid.Column="0" Grid.Row="14" Grid.ColumnSpan="1" Text="Фамилия"/>
+                <TextBlock Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="2"/>
+                
+                <TextBlock Grid.Column="2" Grid.Row="14" Grid.ColumnSpan="1" Text="Имя"/>
+                <TextBlock Grid.Column="3" Grid.Row="14" Grid.ColumnSpan="2"/>
+                
+                <TextBlock Grid.Column="4" Grid.Row="14" Grid.ColumnSpan="1" Text="Отчество"/>
+                <TextBlock Grid.Column="5" Grid.Row="14" Grid.ColumnSpan="7"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="15" Grid.ColumnSpan="1" Text="Дата рождения"/>
+                <TextBlock Grid.Column="1" Grid.Row="15" Grid.ColumnSpan="4"/>
+                <TextBlock Grid.Column="1" Grid.Row="16" Grid.ColumnSpan="4" TextAlignment="Center"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="17" Grid.ColumnSpan="2" Text="Место рождения"/>
+                <TextBlock Grid.Column="1" Grid.Row="17" Grid.ColumnSpan="4"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="18" Grid.ColumnSpan="2" Text="Гражданство"/>
+                <TextBlock Grid.Column="1" Grid.Row="18" Grid.ColumnSpan="4"/>
+                
+                
+                <TextBlock Grid.Column="0" Grid.Row="20" Grid.ColumnSpan="2" Text="Профессия"/>
+                <TextBlock Grid.Column="1" Grid.Row="20" Grid.ColumnSpan="4"/>
+                <TextBlock Grid.Column="1" Grid.Row="21" Grid.ColumnSpan="4" TextAlignment="Center"/>
+                <TextBlock Grid.Column="2" Grid.Row="22" Grid.ColumnSpan="4"/>
+                <TextBlock Grid.Column="2" Grid.Row="23" Grid.ColumnSpan="4" TextAlignment="Center"/>
+                           
+            </Grid>
+    
+    
+</UserControl>

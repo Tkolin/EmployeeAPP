@@ -38,16 +38,16 @@
                 <TextBox Grid.Column="3" Grid.Row="1" x:Name="TBoxPointStart" Margin="10"/>
                   
                   
-                <TextBlock Grid.Column="2" Grid.Row="4" Text="Телефон: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="3" Grid.Row="4" x:Name="TBoxPhoneNumber" Margin="10"/>
+                <TextBlock Grid.Column="2" Grid.Row="2" Text="Телефон: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="3" Grid.Row="2" x:Name="TBoxPhoneNumber" Margin="10"/>
                 
-                <TextBlock Grid.Column="2" Grid.Row="5" Text="Адресс регистранции: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="3" Grid.Row="5" x:Name="TBoxAdressReg" Margin="10"/>
+                <TextBlock Grid.Column="2" Grid.Row="3" Text="Адресс регистранции: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="3" Grid.Row="3" x:Name="TBoxAdressReg" Margin="10"/>
 
-                <TextBlock Grid.Column="2" Grid.Row="6" Text="Адресс проживания: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="3" Grid.Row="6" x:Name="TBoxAdressPos" Margin="10"/>
-                  <TextBlock Grid.Column="2" Grid.Row="6" Text="Серия паспорта: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                  <TextBox Grid.Column="3" Grid.Row="6" x:Name="TBoxPassportSeria" Margin="10"/>
+                <TextBlock Grid.Column="2" Grid.Row="4" Text="Адресс проживания: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="3" Grid.Row="4" x:Name="TBoxAdressPos" Margin="10"/>
+                  <TextBlock Grid.Column="2" Grid.Row="5" Text="Серия паспорта: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                  <TextBox Grid.Column="3" Grid.Row="5" x:Name="TBoxPassportSeria" Margin="10"/>
                   <TextBlock Grid.Column="2" Grid.Row="6" Text="Номер паспорта: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
                   <TextBox Grid.Column="3" Grid.Row="6" x:Name="TBoxPassportNumber" Margin="10"/>
              </Grid>
@@ -58,7 +58,7 @@
                   <Grid ColumnDefinitions="*,*" RowDefinitions="3*,1*" ShowGridLines="True">
                      <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="*,*">
                           <DataGrid   x:Name="DataGridEmployeeToWork"
-                                    AutoGenerateColumns="False"
+                                    AutoGenerateColumns="False" SelectionChanged="DataGridEmployeeToWork_OnSelectionChanged"
                                     IsReadOnly="True" Background="Coral" 
                                     GridLinesVisibility="All"
                                     BorderThickness="4"  Height="200"
@@ -81,19 +81,19 @@
                          
                           <TextBlock Grid.Column="0" Grid.Row="1" Text="Должность: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
                           <ComboBox Grid.Column="1" Grid.Row="1" x:Name="CBoxPosition" Margin="10" Width="160"/>
-                          <Button Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" x:Name="BtnAddPosition" Content="Добавить" />
+
                           
                           <TextBlock Grid.Column="0" Grid.Row="2" Text="Отдел: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
                           <ComboBox Grid.Column="1" Grid.Row="2" x:Name="CBoxUnit" Margin="10" Width="160"/>
-                          <Button Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" x:Name="BtnAddUnit" Content="Добавить"/>
+
                           
                           <TextBlock Grid.Column="0" Grid.Row="3" Text="Документа об увольнении: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <ComboBox Grid.Column="1" Grid.Row="3" x:Name="CBoxOrderDismish" Margin="10" Width="160"/>
-                          <Button Grid.Column="2" Grid.Row="3"  HorizontalAlignment="Left" x:Name="BtnAddOrderDismish" Content="Добавить"/>
+                          <ComboBox Grid.Column="1" Grid.Row="3" x:Name="CBoxOrderDismish" Margin="10" Width="160" SelectionChanged="CBoxOrderDismish_OnSelectionChanged"/>
+                          <Button Grid.Column="2" Grid.Row="3"  HorizontalAlignment="Left" x:Name="BtnAddOrderDismish" Content="Добавить" Click="BtnAddOrderDismish_OnClick"/>
                           
-                          <TextBlock Grid.Column="0" Grid.Row="4" Text="Трудового договор: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <ComboBox Grid.Column="1" Grid.Row="4" x:Name="CBoxOrderWork" Margin="10" Width="160"/>
-                          <Button Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" x:Name="BtnAddOrderWork" Content="Добавить"/>
+                          <TextBlock Grid.Column="0" Grid.Row="4" Text="Трудовой договор: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <ComboBox Grid.Column="1" Grid.Row="4" x:Name="CBoxOrderWork" Margin="10" Width="160" SelectionChanged="CBoxOrderWork_OnSelectionChanged"/>
+                          <Button Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" x:Name="BtnAddOrderWork" Content="Добавить" Click="BtnAddOrderWork_OnClick"/>
                       </Grid>
                       <Grid Grid.Row="1" Grid.Column="0" ColumnDefinitions="1*,3*" RowDefinitions="*,*,*,*,*,*">
                           <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Width="300" Text="Редактирование увольнения" FontWeight="ExtraBold" FontSize="20" Margin="10"/>
@@ -102,15 +102,12 @@
                           <TextBox Grid.Column="1" Grid.Row="1" x:Name="TBOxWorkOrderID" Margin="10" Width="20" HorizontalAlignment="Left" IsEnabled="False"/>
                           
                           <TextBlock Grid.Column="0" Grid.Row="2" Text="Дата документа: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <DatePicker Grid.Column="1" Grid.Row="2" x:Name="TBOxWorkOrderDate" Margin="10"  HorizontalAlignment="Left"/>
+                          <DatePicker Grid.Column="1" Grid.Row="2" x:Name="DPicerkWorkOrderDate" Margin="10"  HorizontalAlignment="Left"/>
                           
                           <TextBlock Grid.Column="0" Grid.Row="3" Text="Дата приёма: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <DatePicker Grid.Column="1" Grid.Row="3" x:Name="TBOxWorkOrderDatemploy" Margin="10"  HorizontalAlignment="Left"/>
+                          <DatePicker Grid.Column="1" Grid.Row="3" x:Name="DPicerkWorkOrderDatemploy" Margin="10"  HorizontalAlignment="Left"/>
                           
-                          <TextBlock Grid.Column="0" Grid.Row="4" Text="Номер контракта: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <TextBox Grid.Column="1" Grid.Row="4" x:Name="TBOxWorkOrderContractNumber" Margin="10" Width="150"  HorizontalAlignment="Left"/>
-                          
-                          <Button Grid.Column="1" Grid.Row="5" x:Name="BtnSaveWorkOrder" Content="Сохранить" Margin="10"  HorizontalAlignment="Center"/>
+                          <Button Grid.Column="1" Grid.Row="5" x:Name="BtnSaveWorkOrder" Content="Сохранить" Margin="10"  HorizontalAlignment="Center" Click="BtnSaveWorkOrder_OnClick"/>
                       </Grid>
                       <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="1*,3*" RowDefinitions="*,*,*,*,*,*">
                           <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Width="300" Text="Редактирование договора" FontWeight="ExtraBold" FontSize="20" Margin="10"/>
@@ -119,12 +116,12 @@
                           <TextBox Grid.Column="1" Grid.Row="1" x:Name="TBOxDismiseOrderID" Margin="10" Width="20" HorizontalAlignment="Left" IsEnabled="False"/>
                           
                           <TextBlock Grid.Column="0" Grid.Row="2" Text="Дата документа: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <DatePicker Grid.Column="1" Grid.Row="2" x:Name="TBOxDismiseDate" Margin="10"  HorizontalAlignment="Left"/>
+                          <DatePicker Grid.Column="1" Grid.Row="2" x:Name="DPicerkDismiseDate" Margin="10"  HorizontalAlignment="Left"/>
                           
                           <TextBlock Grid.Column="0" Grid.Row="3" Text="Дата увольнения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <DatePicker Grid.Column="1" Grid.Row="3" x:Name="TBOxDismiseDateDismise" Margin="10"  HorizontalAlignment="Left"/>
+                          <DatePicker Grid.Column="1" Grid.Row="3" x:Name="DPicerkDismiseDateDismise" Margin="10"  HorizontalAlignment="Left"/>
                           
-                          <Button Grid.Column="1" Grid.Row="5" x:Name="BtnSaveDismision" Content="Сохранить" Margin="10"  HorizontalAlignment="Center"/>
+                          <Button Grid.Column="1" Grid.Row="5" x:Name="BtnSaveDismision" Content="Сохранить" Margin="10"  HorizontalAlignment="Center" Click="BtnSaveDismision_OnClick"/>
                       </Grid>
                   </Grid>
               </TabItem>

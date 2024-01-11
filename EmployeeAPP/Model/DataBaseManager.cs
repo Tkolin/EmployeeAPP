@@ -158,7 +158,7 @@ public class DataBaseManager
             
             reader.GetString("Name"),
             reader.GetString("Name"),
-            reader.GetDateTime("Date") + " " +  reader.GetInt32("Contract_Number") + " " +  reader.GetDateTime("Date_Employment") 
+            reader.GetDateTime("Date")  + " " +  reader.GetDateTime("Date_Employment") 
         ));
     }
     public static List<EmploymentOrder> GetEmploymentOrder()
@@ -167,7 +167,6 @@ public class DataBaseManager
         return GetData(query, reader => new EmploymentOrder(
             reader.GetInt32("ID"),
             reader.GetDateTime("Date"),
-            reader.GetInt32("Contract_Number"),
             reader.GetDateTime("Date_Employment")
         ));
     }
@@ -217,5 +216,60 @@ public class DataBaseManager
     
     
     /// Добавление Удаление Обновление
+    public static void AddDismissal(Dismissal data)
+    {
+        Dictionary<string, object> parameters = new Dictionary<string, object>
+        {
+            { "Date", data.Date },
+            { "Date_Dismise", data.Date_Dismissal }
+        };
+
+        AddEntity(data, "dismissal", parameters);
+    }
+
+    public static void UpdateDismissal(Dismissal data)
+    {
+        Dictionary<string, object> parameters = new Dictionary<string, object>
+        {
+            { "ID", data.ID },
+            { "Date", data.Date },
+            { "Date_Dismise", data.Date_Dismissal }
+        };
+
+        UpdateEntity(data, "dismissal", parameters, "ID");
+    }
+
+    public static void DeleteDismissal(Dismissal data)
+    {
+        DeleteEntity("dismissal", "ID", data.ID);
+    }
+    
+    public static void AddEmploymentOrder(EmploymentOrder data)
+    {
+        Dictionary<string, object> parameters = new Dictionary<string, object>
+        {
+            { "Date", data.Date },
+            { "Date_Employment", data.Date_Employment }
+        };
+
+        AddEntity(data, "employment_order", parameters);
+    }
+
+    public static void UpdateEmploymentOrder(EmploymentOrder data)
+    {
+        Dictionary<string, object> parameters = new Dictionary<string, object>
+        {
+            { "ID", data.ID },
+            { "Date", data.Date },
+            { "Date_Employment", data.Date_Employment }
+        };
+
+        UpdateEntity(data, "employment_order", parameters, "ID");
+    }
+
+    public static void DeleteEmploymentOrder(EmploymentOrder data)
+    {
+        DeleteEntity("employment_order", "ID", data.ID);
+    }
     
 }

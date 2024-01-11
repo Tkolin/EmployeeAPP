@@ -10,6 +10,7 @@
         <entry key="EmployeeAPP/PagesAndWindows/HelloPage.axaml" value="EmployeeAPP/EmployeeAPP.csproj" />
         <entry key="EmployeeAPP/PagesAndWindows/MainWindow.axaml" value="EmployeeAPP/EmployeeAPP.csproj" />
         <entry key="EmployeeAPP/PagesAndWindows/ReferencesPage.axaml" value="EmployeeAPP/EmployeeAPP.csproj" />
+        <entry key="EmployeeAPP/PagesAndWindows/T2Form.axaml" value="EmployeeAPP/EmployeeAPP.csproj" />
       </map>
     </option>
   </component>
