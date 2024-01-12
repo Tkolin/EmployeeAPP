@@ -1,0 +1,81 @@
+﻿create table family_location
+(
+	ID int auto_increment
+		primary key,
+	Name varchar(100) null
+);
+
+create table gender
+(
+	ID int auto_increment
+		primary key,
+	Name varchar(50) null
+);
+
+create table passport
+(
+	ID int auto_increment
+		primary key,
+	Passport_Series varchar(4) null,
+	Passport_number varchar(6) null,
+	registration_address varchar(255) null,
+	positions_address varchar(255) null
+);
+
+create table employee
+(
+	ID int auto_increment
+		primary key,
+	First_Name varchar(255) null,
+	Last_Name varchar(255) null,
+	Patronymic varchar(255) null,
+	Birth_Date date null,
+	Phone_Number varchar(11) null,
+	INN varchar(12) null,
+	Passport_ID int null,
+	Gender_ID int null,
+	Family_Location_ID int null,
+	Login varchar(200) null,
+	Password varchar(200) null,
+	Birth_Adress varchar(255) null,
+	constraint Employee_Family_number_fk
+		foreign key (Family_Location_ID) references family_location (ID),
+	constraint Employee_Gender_number_fk
+		foreign key (Gender_ID) references gender (ID),
+	constraint Employee_Passport_number_fk
+		foreign key (Passport_ID) references passport (ID)
+);
+
+create table position
+(
+	ID int auto_increment
+		primary key,
+	Name varchar(100) null
+);
+
+create table unit
+(
+	ID int auto_increment
+		primary key,
+	Name varchar(100) null
+);
+
+create table employee_to_work
+(
+	ID int auto_increment
+		primary key,
+	Employee_ID int null,
+	Position_ID int null,
+	Unit_ID int null,
+	Date_CreateEmployment date null,
+	Date_Employment date null,
+	Date_CreateDosmissal date not null,
+	Date_Dosmissal date not null,
+	constraint Employee_To_Work_Employee_number_fk
+		foreign key (Employee_ID) references employee (ID),
+	constraint Employee_To_Work_Position_number_fk
+		foreign key (Position_ID) references position (ID),
+	constraint Employee_To_Work_Unit_number_fk
+		foreign key (Unit_ID) references unit (ID)
+);
+
