@@ -10,10 +10,12 @@ namespace EmployeeAPP.PagesAndWindows;
 public partial class CardReportEmployeeWindow : Window
 {
     private Employee _employee { get; set; }
-    public CardReportEmployeeWindow(Employee employee)
+    private EmployeeToWork _employeeToWork { get; set; }
+    public CardReportEmployeeWindow(Employee employee, EmployeeToWork employeeToWork)
     {
         InitializeComponent();
         _employee = employee;
+        _employeeToWork = employeeToWork;
     }
 
     private void BtnCrateCard_OnClick(object? sender, RoutedEventArgs e)
@@ -23,7 +25,7 @@ public partial class CardReportEmployeeWindow : Window
 
     private void CreateCard()
     {
-        T2Form wind = new T2Form();
+        T2Form wind = new T2Form(_employee, _employeeToWork );
         wind.ShowDialog(this);
 
 

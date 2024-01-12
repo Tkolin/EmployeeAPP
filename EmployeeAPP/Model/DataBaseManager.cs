@@ -100,15 +100,7 @@ public class DataBaseManager
         }
     }
     /// Получение данных из базы
-    public static List<Dismissal> GetDismissal()
-    {
-        string query = "SELECT * FROM dismissal";
-        return GetData(query, reader => new Dismissal(
-            reader.GetInt32("ID"),
-            reader.GetDateTime("Date"),
-            reader.GetDateTime("Date_Dismise")
-        ));
-    }
+
     public static List<Employee> GetEmployee()
     {
         string query = @"SELECT *
@@ -144,32 +136,24 @@ public class DataBaseManager
         string query = @"SELECT *
                      FROM employee_to_work e
                      INNER JOIN position pos ON e.Position_ID = pos.ID
-                     INNER JOIN unit unit ON e.Unit_ID = unit.ID
-                     INNER JOIN dismissal dis ON e.Dismissal_ID = dis.ID
-                     INNER JOIN employment_order empOrd ON e.Employment_order_ID = empOrd.ID";
+                     INNER JOIN unit unit ON e.Unit_ID = unit.ID";
         
         return GetData(query, reader => new EmployeeToWork(
             reader.GetInt32("ID"),
             reader.GetInt32("Employee_ID"),
             reader.GetInt32("Position_ID"),
             reader.GetInt32("Unit_ID"),
-            reader.GetInt32("Dismissal_ID"),
-            reader.GetInt32("Employment_order_ID"),
+            reader.GetDateTime("Date_CreateEmployment"),
+            reader.GetDateTime("Date_Employment"),
+            reader.GetDateTime("Date_CreateDosmissal"),
+            reader.GetDateTime("Date_Dosmissal"),
             
             reader.GetString("Name"),
-            reader.GetString("Name"),
-            reader.GetDateTime("Date")  + " " +  reader.GetDateTime("Date_Employment") 
-        ));
+            reader.GetString("Name")
+         ));
     }
-    public static List<EmploymentOrder> GetEmploymentOrder()
-    {
-        string query = "SELECT * FROM employment_order";
-        return GetData(query, reader => new EmploymentOrder(
-            reader.GetInt32("ID"),
-            reader.GetDateTime("Date"),
-            reader.GetDateTime("Date_Employment")
-        ));
-    }
+
+
     public static List<FamilyLocation> GetFamilyLocation()
     {
         string query = "SELECT * FROM family_location";
@@ -216,60 +200,131 @@ public class DataBaseManager
     
     
     /// Добавление Удаление Обновление
-    public static void AddDismissal(Dismissal data)
+    public static void AddEmployee(Employee data)
     {
         Dictionary<string, object> parameters = new Dictionary<string, object>
         {
-            { "Date", data.Date },
-            { "Date_Dismise", data.Date_Dismissal }
+            { "first_Name", data.First_Name},
+            { "last_Name", data.Last_Name},
+            { "patronymic",data.Patronymic},
+            { "birth_Date",data.Birth_Date},
+            { "birth_Adress",data.Birth_Adress},
+            { "phone_Number",data.Phone_Number},
+            { "inn",data.INN},
+            { "passport_ID",data.Passport_ID},
+            { "gender_ID",data.Gender_ID},
+            { "family_Location_ID",data.Family_Location_ID},
+            { "login",data.Login},
+            { "password",data.Password}
         };
 
-        AddEntity(data, "dismissal", parameters);
+        AddEntity(data, "employee", parameters);
     }
 
-    public static void UpdateDismissal(Dismissal data)
-    {
-        Dictionary<string, object> parameters = new Dictionary<string, object>
-        {
-            { "ID", data.ID },
-            { "Date", data.Date },
-            { "Date_Dismise", data.Date_Dismissal }
-        };
-
-        UpdateEntity(data, "dismissal", parameters, "ID");
-    }
-
-    public static void DeleteDismissal(Dismissal data)
-    {
-        DeleteEntity("dismissal", "ID", data.ID);
-    }
-    
-    public static void AddEmploymentOrder(EmploymentOrder data)
-    {
-        Dictionary<string, object> parameters = new Dictionary<string, object>
-        {
-            { "Date", data.Date },
-            { "Date_Employment", data.Date_Employment }
-        };
-
-        AddEntity(data, "employment_order", parameters);
-    }
-
-    public static void UpdateEmploymentOrder(EmploymentOrder data)
+    public static void UpdateEmployee(Employee data)
     {
         Dictionary<string, object> parameters = new Dictionary<string, object>
         {
             { "ID", data.ID },
-            { "Date", data.Date },
-            { "Date_Employment", data.Date_Employment }
+            { "first_Name", data.First_Name},
+            { "last_Name", data.Last_Name},
+            { "patronymic",data.Patronymic},
+            { "birth_Date",data.Birth_Date},
+            { "birth_Adress",data.Birth_Adress},
+            { "phone_Number",data.Phone_Number},
+            { "inn",data.INN},
+            { "passport_ID",data.Passport_ID},
+            { "gender_ID",data.Gender_ID},
+            { "family_Location_ID",data.Family_Location_ID},
+            { "login",data.Login},
+            { "password",data.Password}
         };
 
-        UpdateEntity(data, "employment_order", parameters, "ID");
+        UpdateEntity(data, "employee", parameters, data.ID.ToString());
     }
 
-    public static void DeleteEmploymentOrder(EmploymentOrder data)
+    public static void DeleteEmploye(Employee data)
     {
-        DeleteEntity("employment_order", "ID", data.ID);
+        DeleteEntity("employee", "ID", data.ID);
     }
+    /// <summary>
+    /// Passport
+    /// </summary>
+    /// <param name="data"></param>
+    public static void AddPassport(Passport data)
+    {
+        Dictionary<string, object> parameters = new Dictionary<string, object>
+        {
+            { "Passport_Series", data.Passport_Series},
+            { "Passport_number", data.Passport_Number},
+            { "registration_address",data.Registration_Address},
+            { "positions_address",data.Positions_Address}
+        };
+
+        AddEntity(data, "passport", parameters);
+    }
+
+    public static void UpdatePassport(Passport data)
+    {
+        Dictionary<string, object> parameters = new Dictionary<string, object>
+        {
+            { "ID", data.ID },
+            { "Passport_Series", data.Passport_Series},
+            { "Passport_number", data.Passport_Number},
+            { "registration_address",data.Registration_Address},
+            { "positions_address",data.Positions_Address}
+        };
+
+        UpdateEntity(data, "passport", parameters, data.ID.ToString());
+    }
+
+    public static void DeletePassport(Passport data)
+    {
+        DeleteEntity("passport", "ID", data.ID);
+    }
+    /// <summary>
+    /// EmployeeToWork
+    /// </summary>
+    /// <param name="data"></param>
+    public static void AddEmployeeToWork(EmployeeToWork data)
+    {
+        Dictionary<string, object> parameters = new Dictionary<string, object>
+        {
+            { "Employee_ID", data.Employee_ID},
+            { "Position_ID", data.Position_ID},
+            { "Unit_ID",data.Unit_ID},
+            { "Date_CreateEmployment",data.DateCreateEmployment},
+            { "Date_Employment",data.DateEmployment},
+            { "Date_CreateDosmissal",data.DateCreateDosmissal},
+            { "Date_Dosmissal",data.DateDosmissal}
+        };
+
+        AddEntity(data, "employee_to_work", parameters);
+    }
+
+    public static void UpdateEmployeeToWork(EmployeeToWork data)
+    {
+        Dictionary<string, object> parameters = new Dictionary<string, object>
+        {
+            { "ID", data.ID },
+            { "Employee_ID", data.Employee_ID},
+            { "Position_ID", data.Position_ID},
+            { "Unit_ID",data.Unit_ID},
+            { "Date_CreateEmployment",data.DateCreateEmployment},
+            { "Date_Employment",data.DateEmployment},
+            { "Date_CreateDosmissal",data.DateCreateDosmissal},
+            { "Date_Dosmissal",data.DateDosmissal}
+        };
+
+        UpdateEntity(data, "employee_to_work", parameters, data.ID.ToString());
+    }
+
+    public static void DeleteEmployeeToWork(EmployeeToWork data)
+    {
+        DeleteEntity("employee_to_work", "ID", data.ID);
+    }
+
+
+
     
 }

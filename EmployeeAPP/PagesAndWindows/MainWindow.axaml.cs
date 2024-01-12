@@ -115,8 +115,13 @@ public partial class MainWindow : Window
             MessageBoxManager.GetMessageBoxStandard("Ошибка", "Работник не выбран!", ButtonEnum.Ok).ShowAsync();
             return;
         }
-
-        CardReportEmployeeWindow cardWind = new CardReportEmployeeWindow(DataGridEmploy.SelectedItem as Employee);
+        if (DataGridOrderToWork.SelectedItem == null)
+        {
+            MessageBoxManager.GetMessageBoxStandard("Ошибка", "Акт работы не выбран!", ButtonEnum.Ok).ShowAsync();
+            return;
+        }
+        CardReportEmployeeWindow cardWind = new CardReportEmployeeWindow(DataGridEmploy.SelectedItem as Employee, DataGridOrderToWork.SelectedItem as EmployeeToWork);
+        
         cardWind.ShowDialog(this);
     }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using EmployeeAPP.Model;
@@ -17,19 +18,15 @@ public partial class EmployeeEditPage : Window
     private bool addPage = true;
     private Employee _employeeEdit { get; set; }
     private Passport _employeePassport { get; set; }
-    private EmployeeToWork _employeeToWork { get; set; }
+
     
     
     
     private List<Gender> _DataGender { get; set; }
     private List<FamilyLocation> _DataFamilyLocation { get; set; }
     
-    private List<Dismissal> _DataDismissal { get; set; }
-    private List<Dismissal> _ViewDismissal { get; set; }
-    
-    private List<EmploymentOrder> _DataEmploymentOrder { get; set; }
-    private List<EmploymentOrder> _ViewEmploymentOrder { get; set; }
-    
+
+    private EmployeeToWork _employeeToWork { get; set; }
     private List<Position> _DataPosition { get; set; }
     
     private List<Unit> _DataUnit { get; set; }
@@ -43,16 +40,23 @@ public partial class EmployeeEditPage : Window
     {
         InitializeComponent();
         DownloadData();
+        _employeeEdit = new Employee();
+        _employeePassport = new Passport();
+        UpdateComBox();
+        FilterViewData();
        // DownloadDataGrid();
     }
     public EmployeeEditPage(Employee employee)
     {
         InitializeComponent();
         DownloadData();
+                
+        UpdateComBox();
+        FilterViewData();
         _employeeEdit = employee;
-        _employeePassport = DataBaseManager.GetPassport().Where(e => e.ID == employee.Passport_ID).First() ??
+        _employeePassport = DataBaseManager.GetPassport().Where(e => e.ID == employee.Passport_ID).FirstOrDefault() ??
                             new Passport();
-        _employeeToWork = DataBaseManager.GetEmployeeToWork().Where(e => e.Employee_ID == _employeeEdit.ID).First() ??
+        _employeeToWork = DataBaseManager.GetEmployeeToWork().Where(e => e.Employee_ID == _employeeEdit.ID).FirstOrDefault() ??
                           new EmployeeToWork();
         addPage = false;
         Tab1UpdateView();
@@ -62,31 +66,20 @@ public partial class EmployeeEditPage : Window
 
     public void DownloadData()
     {
-        _DataDismissal = DataBaseManager.GetDismissal();
+        
         _DataGender = DataBaseManager.GetGender();
         _DataPosition = DataBaseManager.GetPosition();
         _DataUnit = DataBaseManager.GetUnit();
         _DataFamilyLocation = DataBaseManager.GetFamilyLocation();
-        _DataEmploymentOrder = DataBaseManager.GetEmploymentOrder();
+
         
         DataGridEmployeeToWork.ItemsSource = _ViewEmployeeToWork;
-        
-        UpdateComBox();
-        FilterViewData();
+
     }
 
     public void FilterViewData()
     {
-        if (addPage)
-        {
-            _ViewDismissal = new List<Dismissal>();
-            _ViewEmploymentOrder = new List<EmploymentOrder>();
-        }
-        else
-        {
-            _ViewDismissal = _DataDismissal.Where(d => d.ID == _employeeToWork.Dismissal_ID).ToList();
-            _ViewEmploymentOrder = _DataEmploymentOrder.Where(d=>d.ID == _employeeToWork.employment_order_ID).ToList();
-        }
+
 
     }
     public void UpdateComBox()
@@ -95,8 +88,6 @@ public partial class EmployeeEditPage : Window
         CBoxFamily.ItemsSource = _DataFamilyLocation;
         CBoxPosition.ItemsSource = _DataPosition;
         CBoxUnit.ItemsSource = _DataUnit;
-        CBoxOrderDismish.ItemsSource = _DataDismissal;
-        CBoxOrderWork.ItemsSource = _DataEmploymentOrder;
     }
 
 
@@ -106,13 +97,21 @@ public partial class EmployeeEditPage : Window
     private void BtnResetEmpToWork_OnClick(object? sender, RoutedEventArgs e)
     {
         DataGridEmployeeToWork.SelectedItem = null;
+        DataGridEmployeeToWork_OnSelectionChanged(sender,null);
+        
+        Panel2.IsEnabled = false;
+
+
     }
 
     private bool addEmptToWork = true;
     private void BtnAddEmpToWork_OnClick(object? sender, RoutedEventArgs e)
     {
         DataGridEmployeeToWork.SelectedItem = null;
-        addEmptToWork = true;
+        DataGridEmployeeToWork_OnSelectionChanged(sender,null);
+        
+        Panel2.IsEnabled = true;
+
     }
     /// <summary>
     /// 1 Раздел 
@@ -155,146 +154,146 @@ public partial class EmployeeEditPage : Window
         {
             CBoxPosition.SelectedItem =  null;
             CBoxUnit.SelectedItem =  null;   
-            CBoxOrderDismish.SelectedItem =  null; 
-            CBoxOrderWork.SelectedItem = null; 
+
+            TBOxEmpToWorkID.Text = null;
+            DPickCreateEmploy.SelectedDate = null;
+            DPickEmploy.SelectedDate = null;
+            DPickCreateDismission.SelectedDate = null;
+            DPickDismission.SelectedDate   = null;
 
             addEmptToWork = true;
+           
             return;
         }
-
+        
         addEmptToWork = false;
         EmployeeToWork emptwo = DataGridEmployeeToWork.SelectedItem as EmployeeToWork;
         
+        TBOxEmpToWorkID.Text = emptwo.ID.ToString();
         CBoxPosition.SelectedItem = _DataPosition.Where(d=>d.ID==emptwo.Position_ID).FirstOrDefault()  ?? null;
         CBoxUnit.SelectedItem = _DataUnit.Where(d=>d.ID==emptwo.Position_ID).FirstOrDefault()  ?? null;   
-        CBoxOrderDismish.SelectedItem = _ViewDismissal.Where(d=>d.ID==emptwo.Position_ID).FirstOrDefault()  ?? null; 
-        CBoxOrderWork.SelectedItem = _ViewEmploymentOrder.Where(d=>d.ID==emptwo.Position_ID).FirstOrDefault()  ?? null; 
-    }
-
-
-    private void BtnAddOrderDismish_OnClick(object? sender, RoutedEventArgs e)
-    {
-        CBoxOrderDismish.SelectedItem = null;
-    }
-    
-
-
-    private void BtnAddOrderWork_OnClick(object? sender, RoutedEventArgs e)
-    {
-        CBoxOrderWork.SelectedItem = null;
-    }
-    private bool addOrderDismish = true;
-    private void CBoxOrderDismish_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
-    {
-        if (CBoxOrderDismish.SelectedItem == null)
-        {
-            addOrderDismish = true;
-            Dismissal addet = new Dismissal();
-
-            TBOxDismiseOrderID.Text = "";
-            DPicerkDismiseDate.SelectedDate = DateTime.Now;
-            DPicerkDismiseDateDismise.SelectedDate = DateTime.Now;
-
-        }
-        else
-        {
-            addOrderDismish = false;
-            Dismissal selected = CBoxOrderDismish.SelectedItem as Dismissal;
-
-            TBOxDismiseOrderID.Text = selected.ID.ToString();
-            DPicerkDismiseDate.SelectedDate = selected.Date;
-            DPicerkDismiseDateDismise.SelectedDate = selected.Date_Dismissal;
-        }
-    }
-
-    private bool addOrderWork = true;
-    private void CBoxOrderWork_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
-    {
-        if (CBoxOrderWork.SelectedItem == null)
-        {
-            addOrderWork = true;
-            EmploymentOrder addet = new EmploymentOrder();
-            
-            TBOxWorkOrderID.Text = "";
-            DPicerkWorkOrderDate.SelectedDate = DateTime.Now;
-            DPicerkWorkOrderDatemploy.SelectedDate = DateTime.Now;
-
-        }
-        else
-        {
-            addOrderWork = false;
-            EmploymentOrder selected = CBoxOrderWork.SelectedItem as EmploymentOrder;
-
-            TBOxWorkOrderID.Text = selected.ID.ToString();
-            DPicerkWorkOrderDate.SelectedDate = selected.Date;
-            DPicerkWorkOrderDatemploy.SelectedDate = selected.Date_Employment;
-        }
+        DPickCreateEmploy.SelectedDate = emptwo.DateCreateEmployment;
+        DPickEmploy.SelectedDate = emptwo.DateEmployment;
+        DPickCreateDismission.SelectedDate = emptwo.DateCreateDosmissal;
+        DPickDismission.SelectedDate   = emptwo.DateDosmissal;
     }
     
     /// <summary>
-    /// 3 Четверть
-    /// </summary>
-
-    private void BtnSaveWorkOrder_OnClick(object? sender, RoutedEventArgs e)
-    {
-        if (DPicerkWorkOrderDate.SelectedDate == null || DPicerkWorkOrderDatemploy.SelectedDate == null)
-        {
-            MessageBoxManager.GetMessageBoxStandard("Ошибка","Данные не заполнены",ButtonEnum.Ok).ShowAsync();
-            return;
-        } 
-        
-        if (addOrderWork)
-        {
-            EmploymentOrder addOrder = new EmploymentOrder();
-            addOrder.Date = DPicerkWorkOrderDate.SelectedDate.Value.Date;
-            addOrder.Date_Employment = DPicerkDismiseDateDismise.SelectedDate.Value.Date;
-            
-            DataBaseManager.AddEmploymentOrder(addOrder);
-        }
-        else
-        {
-            EmploymentOrder editOrder = CBoxOrderWork.SelectedItem as EmploymentOrder;
-            editOrder.Date = DPicerkWorkOrderDate.SelectedDate.Value.Date;
-            editOrder.Date_Employment = DPicerkDismiseDateDismise.SelectedDate.Value.Date;
-             
-            DataBaseManager.UpdateEmploymentOrder(editOrder);
-        }
-    }
-    
-    /// <summary>
-    /// 4 Четверть
+    /// Подвал
     /// </summary>
 
 
 
-
-    private void BtnSaveDismision_OnClick(object? sender, RoutedEventArgs e)
+    
+    private void InputElement_OnTapped(object? sender, TappedEventArgs e)
     {
-        if (DPicerkDismiseDate.SelectedDate == null || DPicerkDismiseDateDismise.SelectedDate == null)
+        DataGridEmployeeToWork.SelectedItem = null;
+    }
+
+    private void BtnSaveEmpToWork_OnClick(object? sender, RoutedEventArgs e)
+    {
+        if (
+            CBoxPosition.SelectedItem == null ||
+            CBoxUnit.SelectedItem == null ||
+            DPickCreateEmploy.SelectedDate == null ||
+            DPickEmploy.SelectedDate == null ||
+            addPage
+        )
         {
-            MessageBoxManager.GetMessageBoxStandard("Ошибка","Данные не заполнены",ButtonEnum.Ok).ShowAsync();
+            MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не заполнены!", ButtonEnum.Ok).ShowAsync();
             return;
-        } 
+        }
+        _employeeToWork = new EmployeeToWork();
+        _employeeToWork.Employee_ID = _employeeEdit.ID;
+        _employeeToWork.Position_ID = (CBoxPosition.SelectedItem as Position).ID;
+        _employeeToWork.Unit_ID = (CBoxUnit.SelectedItem as Unit).ID;
+        _employeeToWork.DateEmployment = DPickEmploy.SelectedDate.Value.DateTime;
+        _employeeToWork.DateCreateEmployment = DPickCreateEmploy.SelectedDate.Value.DateTime;
+        if(DPickDismission.SelectedDate != null )
+            _employeeToWork.DateDosmissal = DPickDismission.SelectedDate.Value.DateTime;
+        if(DPickCreateDismission.SelectedDate != null )
+            _employeeToWork.DateCreateDosmissal = DPickCreateDismission.SelectedDate.Value.DateTime;
         
-        if (addOrderDismish)
+        if (addEmptToWork)
         {
-            Dismissal addOrder = new Dismissal();
-            addOrder.Date = DPicerkDismiseDate.SelectedDate.Value.Date;
-            addOrder.Date_Dismissal = DPicerkDismiseDateDismise.SelectedDate.Value.Date;
-            
-            DataBaseManager.AddDismissal(addOrder);
+            DataBaseManager.AddEmployeeToWork(_employeeToWork);
+            DownloadData();
+                    
+            UpdateComBox();
+            FilterViewData();
         }
         else
         {
-            Dismissal editOrder = CBoxOrderWork.SelectedItem as Dismissal;
-            editOrder.Date = DPicerkDismiseDate.SelectedDate.Value.Date;
-            editOrder.Date_Dismissal = DPicerkDismiseDateDismise.SelectedDate.Value.Date;
-
-            DataBaseManager.UpdateDismissal(editOrder);
+            DataBaseManager.UpdateEmployeeToWork(_employeeToWork);
+            DownloadData();
+                    
+            UpdateComBox();
+            FilterViewData();
         }
     }
 
+    private void Button_OnClick(object? sender, RoutedEventArgs e)
+    {
+        if (
+            TBoxLastName.Text.Length <= 0 ||
+            TBoxFirstName.Text.Length <= 0 ||
+            TBoxPatronymic.Text.Length <= 0 ||
+            CBoxGender.SelectedItem == null ||
+            CBoxFamily.SelectedItem == null ||
+            DPicerDateBirth.SelectedDate == null  ||
+            TBoxPointStart.Text.Length <= 0 ||
+            TBoxPhoneNumber.Text.Length <= 0 ||
+            TBoxAdressReg.Text.Length <= 0 ||
+            TBoxAdressPos.Text.Length <= 0 ||
+            TBoxPassportSeria.Text.Length <= 0 ||
+            TBoxPassportNumber.Text.Length <= 0 
+        )
+        {
+            MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не заполнены!", ButtonEnum.Ok).ShowAsync();
+            return;
+        }
+
+        _employeePassport.Passport_Number = TBoxPassportNumber.Text;
+        _employeePassport.Passport_Series = TBoxPassportSeria.Text;
+        _employeePassport.Registration_Address = TBoxAdressReg.Text;
+        _employeePassport.Positions_Address = TBoxAdressPos.Text;
+        
+        if (addPage)
+        {
+            DataBaseManager.AddPassport(_employeePassport);
+            DownloadData();
+            _employeePassport = DataBaseManager.GetPassport().Last();
+        }
+        else
+        {
+            DataBaseManager.UpdatePassport(_employeePassport);
+            DownloadData();
+        }
+        
+        _employeeEdit.First_Name = TBoxFirstName.Text;
+        _employeeEdit.Last_Name = TBoxLastName.Text;
+        _employeeEdit.Patronymic = TBoxPatronymic.Text;
+        _employeeEdit.Gender_ID = (CBoxGender.SelectedItem as Gender).ID;
+        _employeeEdit.Passport_ID = _employeePassport.ID;
+        _employeeEdit.Family_Location_ID = (CBoxFamily.SelectedItem as FamilyLocation).ID;
+        _employeeEdit.INN = TBoxFirstName.Text;
+        _employeeEdit.Birth_Date = DPicerDateBirth.SelectedDate.Value.DateTime;
+        _employeeEdit.Birth_Adress = TBoxPointStart.Text;
+        _employeeEdit.Phone_Number = TBoxPhoneNumber.Text;
+        
+        if (addPage)
+        {
+            DataBaseManager.AddEmployee(_employeeEdit);
+            DownloadData();
+            _employeeEdit = DataBaseManager.GetEmployee().Last();
+        }
+        else
+        {
+            DataBaseManager.UpdateEmployee(_employeeEdit);
+            DownloadData();
+        }
 
 
-
+        addEmptToWork = false;
+    }
 }

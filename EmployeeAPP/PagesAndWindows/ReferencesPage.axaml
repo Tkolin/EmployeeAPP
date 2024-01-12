@@ -46,39 +46,8 @@
                   </DataGrid>
               </StackPanel>
           </TabItem>
-          <TabItem Header="Договора увольнения" FontSize="16" FontWeight="DemiBold" Padding="2" >
-              <StackPanel>
-                  <DataGrid  x:Name="DataGridDismise"
-                             AutoGenerateColumns="False" Height="550" Width="980"
-                             IsReadOnly="True" Background="Coral" 
-                             GridLinesVisibility="All"
-                             BorderThickness="2"
-                             Margin="30" 
-                             x:DataType="models:Dismissal">
-                      <DataGrid.Columns>
-                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
-                          <DataGridTextColumn Width="*" Header="Дата" Binding="{Binding Date}"/>
-                      </DataGrid.Columns>
-                  </DataGrid>
-              </StackPanel>
-          </TabItem>
-          <TabItem Header="Договора приёма на работу" FontSize="16" FontWeight="DemiBold" Padding="2" >
-              <StackPanel>
-                  <DataGrid  x:Name="DataGridOrderToWork"
-                             AutoGenerateColumns="False"
-                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
-                             GridLinesVisibility="All"
-                             BorderThickness="2"
-                             Margin="30" 
-                             x:DataType="models:EmploymentOrder">
-                      <DataGrid.Columns>
-                          <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
-                          <DataGridTextColumn Width="*" Header="Дата документа" Binding="{Binding Date}"/>
-                          <DataGridTextColumn Width="*" Header="Дата приёма на работу" Binding="{Binding Date_Employment}"/>
-                      </DataGrid.Columns>
-                  </DataGrid>
-              </StackPanel>
-          </TabItem>
+
+          
           <TabItem Header="Паспорта" FontSize="16" FontWeight="DemiBold" Padding="2" >
               <StackPanel>
                   <DataGrid  x:Name="DataGridPassport"
@@ -91,8 +60,8 @@
                       <DataGrid.Columns>
                           <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
                           <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Series}"/>
-                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Passport_Number}"/>
-                          <DataGridTextColumn Width="*" Header="Серия" Binding="{Binding Registration_Address}"/>
+                          <DataGridTextColumn Width="*" Header="Номер" Binding="{Binding Passport_Number}"/>
+                          <DataGridTextColumn Width="*" Header="Адресс" Binding="{Binding Registration_Address}"/>
                       </DataGrid.Columns>
                   </DataGrid>
               </StackPanel>

@@ -108,11 +108,13 @@
                                                  Margin="30"  Height="650" Background="Coral"
                                                  x:DataType="models:EmployeeToWork">
                                 <DataGrid.Columns>
-                                        <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ID}"/>
-                                        <DataGridTextColumn Width="*" Header="Должность" Binding="{Binding PositionData}"/>
-                                        <DataGridTextColumn Width="*" Header="Отдел" Binding="{Binding UnitData}"/>
-                                        <DataGridTextColumn Width="*" Header="Приказ уволнения" Binding="{Binding DismissalnData}"/>
-                                        <DataGridTextColumn Width="*" Header="Данные о приказе о приеме на работу" Binding="{Binding EmploymentOrderData}"/>
+                                        <DataGridTextColumn Width="2*" Header="ID" Binding="{Binding ID}"/>
+                                        <DataGridTextColumn Width="2*" Header="Должность" Binding="{Binding PositionData}"/>
+                                        <DataGridTextColumn Width="2*" Header="Отдел" Binding="{Binding UnitData}"/>
+                                        <DataGridTextColumn Width="2*" Header="Дата документа" Binding="{Binding DateDosmissal}"/>
+                                        <DataGridTextColumn Width="2*" Header="Дата приёма на работу" Binding="{Binding DateCreateDosmissal}"/>
+                                        <DataGridTextColumn Width="2*" Header="Дата документа" Binding="{Binding DateEmployment}"/>
+                                        <DataGridTextColumn Width="2*" Header="Дата увольнениея" Binding="{Binding DateCreateEmployment}"/>
 
                                 </DataGrid.Columns>
                         </DataGrid>

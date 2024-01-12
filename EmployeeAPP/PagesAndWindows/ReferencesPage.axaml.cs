@@ -10,8 +10,7 @@ namespace EmployeeAPP.PagesAndWindows;
 
 public partial class ReferencesPage : Window
 {
-    private List<Dismissal> _DataDismissal { get; set; }
-    private List<Dismissal> _ViewDismissal { get; set; }
+
     
     private List<Passport> _DataPassport { get; set; }
     private List<Passport> _ViewPassport { get; set; }
@@ -32,23 +31,19 @@ public partial class ReferencesPage : Window
     }
     public void DownloadDataGrid()
     {
-        _DataDismissal = DataBaseManager.GetDismissal();
         _DataPassport = DataBaseManager.GetPassport();
         _DataPosition = DataBaseManager.GetPosition();
         _DataUnit = DataBaseManager.GetUnit();
         _DataEmployeeToWork = DataBaseManager.GetEmployeeToWork();
-
-        _ViewDismissal = _DataDismissal;
+        
         _ViewPassport = _DataPassport;
         _ViewPosition = _DataPosition;
         _ViewUnit = _DataUnit;
         _ViewEmployeeToWork = _DataEmployeeToWork;
         
-        DataGridDismise.ItemsSource = _ViewDismissal;
         DataGridPassport.ItemsSource = _ViewPassport;
         DataGridPosition.ItemsSource = _ViewPosition;
         DataGridUnit.ItemsSource = _ViewUnit;
-        DataGridOrderToWork.ItemsSource = _ViewEmployeeToWork;
       
     }
 }

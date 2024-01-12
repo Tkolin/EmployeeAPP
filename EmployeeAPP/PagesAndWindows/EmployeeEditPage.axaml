@@ -3,15 +3,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" 
-        MinHeight="600" MinWidth="1300" MaxHeight="600" MaxWidth="1300"
+        MinHeight="640" MinWidth="1300" MaxHeight="640" MaxWidth="1300"
         x:Class="EmployeeAPP.PagesAndWindows.EmployeeEditPage"
         xmlns:models="clr-namespace:EmployeeAPP.Model"
         Title="Редактирование сотрудника">
- <StackPanel Background="Azure">
+    <Grid>
+    <StackPanel Background="Azure">
       <TabControl Margin="5" TabStripPlacement="Left">
   <TabItem Header="Основные данные" FontSize="16" FontWeight="DemiBold" Padding="2" >
               <Border BorderBrush="Black" BorderThickness="3" Background="Aquamarine">
-              <Grid ColumnDefinitions="3*,7*,3*,7*" RowDefinitions="50,50,50,50,50,50,50,50,50,50,50,50,50">
+              <Grid ColumnDefinitions="3*,7*,3*,7*" RowDefinitions="50,50,50,50,50,50,50,50">
                   
                   <TextBlock Grid.Column="0" Grid.Row="0" Text="Код: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 <TextBox Grid.Column="1" Grid.Row="0" x:Name="TBoxID" Margin="10" Width="10" HorizontalAlignment="Left" IsEnabled="False"/>
@@ -26,10 +27,26 @@
                 <TextBox Grid.Column="1" Grid.Row="3" x:Name="TBoxPatronymic" Margin="10"/>
                 
                 <TextBlock Grid.Column="0" Grid.Row="4" Text="Пол: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <ComboBox Grid.Column="1" Grid.Row="4" x:Name="CBoxGender" Margin="10" Width="370"/>
+                <ComboBox Grid.Column="1" Grid.Row="4" x:Name="CBoxGender" Margin="10" Width="370">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="models:Gender">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>                    
+                </ComboBox>
                 
                 <TextBlock Grid.Column="0" Grid.Row="5" Text="Семейное положение: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <ComboBox Grid.Column="1" Grid.Row="5" x:Name="CBoxFamily" Margin="10" Width="370"/>
+                <ComboBox Grid.Column="1" Grid.Row="5" x:Name="CBoxFamily" Margin="10" Width="370">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="models:FamilyLocation">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>                    
+                </ComboBox>
                 
                 <TextBlock Grid.Column="2" Grid.Row="0" Text="Дата рождения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 <DatePicker Grid.Column="3" Grid.Row="0" x:Name="DPicerDateBirth" Margin="10"/>
@@ -50,82 +67,90 @@
                   <TextBox Grid.Column="3" Grid.Row="5" x:Name="TBoxPassportSeria" Margin="10"/>
                   <TextBlock Grid.Column="2" Grid.Row="6" Text="Номер паспорта: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
                   <TextBox Grid.Column="3" Grid.Row="6" x:Name="TBoxPassportNumber" Margin="10"/>
+                  <Button Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="4" Content="Сохранить изменения" HorizontalAlignment="Center" Click="Button_OnClick"/>
              </Grid>
 
               </Border>
           </TabItem>
-          <TabItem Header="Трудовые документы" FontSize="16" FontWeight="DemiBold" Padding="2" >
-                  <Grid ColumnDefinitions="*,*" RowDefinitions="3*,1*" ShowGridLines="True">
+          <TabItem Header="Трудовые документы" FontSize="16" FontWeight="DemiBold" Padding="2" Tapped="InputElement_OnTapped" >
+              <Border BorderBrush="Black" BorderThickness="3" Background="Aquamarine">
+              <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" ShowGridLines="True">
                      <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="*,*">
                           <DataGrid   x:Name="DataGridEmployeeToWork"
                                     AutoGenerateColumns="False" SelectionChanged="DataGridEmployeeToWork_OnSelectionChanged"
                                     IsReadOnly="True" Background="Coral" 
                                     GridLinesVisibility="All"
-                                    BorderThickness="4"  Height="200"
+                                    BorderThickness="4"  Height="350"
                                     x:DataType="models:EmployeeToWork">
                               <DataGrid.Columns>
                                   <DataGridTextColumn Width="2*" Header="ID" Binding="{Binding ID}"/>
                                   <DataGridTextColumn Width="2*" Header="Должность" Binding="{Binding PositionData}"/>
                                   <DataGridTextColumn Width="2*" Header="Отдел" Binding="{Binding UnitData}"/>
-                                  <DataGridTextColumn Width="4*" Header="Номер документа об увольнения" Binding="{Binding Dismissal_ID}"/>
-                                  <DataGridTextColumn Width="4*" Header="Номер трудового договора" Binding="{Binding employment_order_ID}"/>
+                                  <DataGridTextColumn Width="2*" Header="Дата документа" Binding="{Binding DateDosmissal}"/>
+                                  <DataGridTextColumn Width="2*" Header="Дата приёма на работу" Binding="{Binding DateCreateDosmissal}"/>
+                                  <DataGridTextColumn Width="2*" Header="Дата документа" Binding="{Binding DateEmployment}"/>
+                                  <DataGridTextColumn Width="2*" Header="Дата увольнениея" Binding="{Binding DateCreateEmployment}"/>
+                                  
                               </DataGrid.Columns>
                           </DataGrid>
-                         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="3">
+                         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="3" x:Name="Panel1">
                              <Button  HorizontalAlignment="Center" x:Name="BtnAddEmpToWork" Content="Добавить" Click="BtnAddEmpToWork_OnClick"/>
                              <Button  HorizontalAlignment="Center" x:Name="BtnResetEmpToWork" Content="Отменить" Click="BtnResetEmpToWork_OnClick"/>
                          </StackPanel>
                      </Grid>
-                      <Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*,*" >
-
-                         
-                          <TextBlock Grid.Column="0" Grid.Row="1" Text="Должность: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <ComboBox Grid.Column="1" Grid.Row="1" x:Name="CBoxPosition" Margin="10" Width="160"/>
-
-                          
-                          <TextBlock Grid.Column="0" Grid.Row="2" Text="Отдел: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <ComboBox Grid.Column="1" Grid.Row="2" x:Name="CBoxUnit" Margin="10" Width="160"/>
-
-                          
-                          <TextBlock Grid.Column="0" Grid.Row="3" Text="Документа об увольнении: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <ComboBox Grid.Column="1" Grid.Row="3" x:Name="CBoxOrderDismish" Margin="10" Width="160" SelectionChanged="CBoxOrderDismish_OnSelectionChanged"/>
-                          <Button Grid.Column="2" Grid.Row="3"  HorizontalAlignment="Left" x:Name="BtnAddOrderDismish" Content="Добавить" Click="BtnAddOrderDismish_OnClick"/>
-                          
-                          <TextBlock Grid.Column="0" Grid.Row="4" Text="Трудовой договор: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <ComboBox Grid.Column="1" Grid.Row="4" x:Name="CBoxOrderWork" Margin="10" Width="160" SelectionChanged="CBoxOrderWork_OnSelectionChanged"/>
-                          <Button Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" x:Name="BtnAddOrderWork" Content="Добавить" Click="BtnAddOrderWork_OnClick"/>
-                      </Grid>
-                      <Grid Grid.Row="1" Grid.Column="0" ColumnDefinitions="1*,3*" RowDefinitions="*,*,*,*,*,*">
-                          <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Width="300" Text="Редактирование увольнения" FontWeight="ExtraBold" FontSize="20" Margin="10"/>
+                      <Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*,*,*,*,*,*,*" x:Name="Panel2" IsEnabled="False">
+                          <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Width="300" Text="Редактирование связей" FontWeight="ExtraBold" FontSize="20" Margin="10"/>
                          
                           <TextBlock Grid.Column="0" Grid.Row="1" Text="ID:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <TextBox Grid.Column="1" Grid.Row="1" x:Name="TBOxWorkOrderID" Margin="10" Width="20" HorizontalAlignment="Left" IsEnabled="False"/>
-                          
-                          <TextBlock Grid.Column="0" Grid.Row="2" Text="Дата документа: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <DatePicker Grid.Column="1" Grid.Row="2" x:Name="DPicerkWorkOrderDate" Margin="10"  HorizontalAlignment="Left"/>
-                          
-                          <TextBlock Grid.Column="0" Grid.Row="3" Text="Дата приёма: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <DatePicker Grid.Column="1" Grid.Row="3" x:Name="DPicerkWorkOrderDatemploy" Margin="10"  HorizontalAlignment="Left"/>
-                          
-                          <Button Grid.Column="1" Grid.Row="5" x:Name="BtnSaveWorkOrder" Content="Сохранить" Margin="10"  HorizontalAlignment="Center" Click="BtnSaveWorkOrder_OnClick"/>
-                      </Grid>
-                      <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="1*,3*" RowDefinitions="*,*,*,*,*,*">
-                          <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Width="300" Text="Редактирование договора" FontWeight="ExtraBold" FontSize="20" Margin="10"/>
+                          <TextBox Grid.Column="1" Grid.Row="1" x:Name="TBOxEmpToWorkID" Margin="10" Width="20" HorizontalAlignment="Left" IsEnabled="False"/>
                          
-                          <TextBlock Grid.Column="0" Grid.Row="1" Text="ID:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <TextBox Grid.Column="1" Grid.Row="1" x:Name="TBOxDismiseOrderID" Margin="10" Width="20" HorizontalAlignment="Left" IsEnabled="False"/>
                           
-                          <TextBlock Grid.Column="0" Grid.Row="2" Text="Дата документа: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <DatePicker Grid.Column="1" Grid.Row="2" x:Name="DPicerkDismiseDate" Margin="10"  HorizontalAlignment="Left"/>
+                          <TextBlock Grid.Column="0" Grid.Row="2" Text="Должность: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <ComboBox Grid.Column="1" Grid.Row="2" x:Name="CBoxPosition" Margin="10" Width="160">
+                              <ComboBox.ItemTemplate>
+                                  <DataTemplate x:DataType="models:Position">
+                                      <StackPanel Orientation="Horizontal">
+                                          <TextBlock Text="{Binding Name}"/>
+                                      </StackPanel>
+                                  </DataTemplate>
+                              </ComboBox.ItemTemplate>                    
+                          </ComboBox>
+
                           
-                          <TextBlock Grid.Column="0" Grid.Row="3" Text="Дата увольнения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <DatePicker Grid.Column="1" Grid.Row="3" x:Name="DPicerkDismiseDateDismise" Margin="10"  HorizontalAlignment="Left"/>
+                          <TextBlock Grid.Column="0" Grid.Row="3" Text="Отдел: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <ComboBox Grid.Column="1" Grid.Row="3" x:Name="CBoxUnit" Margin="10" Width="160">
+                              <ComboBox.ItemTemplate>
+                                  <DataTemplate x:DataType="models:Unit">
+                                      <StackPanel Orientation="Horizontal">
+                                          <TextBlock Text="{Binding Name}"/>
+                                      </StackPanel>
+                                  </DataTemplate>
+                              </ComboBox.ItemTemplate>                    
+                          </ComboBox>
+
+                          <TextBlock Grid.Column="0" Grid.Row="4" Text="Дата документа трудоустройства: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <DatePicker Grid.Column="1" Grid.Row="4" x:Name="DPickCreateEmploy" Margin="10" Width="160"/>
+
+                          <TextBlock Grid.Column="0" Grid.Row="5" Text="Дата трудоустройства: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <DatePicker Grid.Column="1" Grid.Row="5" x:Name="DPickEmploy" Margin="10" Width="160"/>
                           
-                          <Button Grid.Column="1" Grid.Row="5" x:Name="BtnSaveDismision" Content="Сохранить" Margin="10"  HorizontalAlignment="Center" Click="BtnSaveDismision_OnClick"/>
+                          <TextBlock Grid.Column="0" Grid.Row="6" Text="Дата документа увольнения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <DatePicker Grid.Column="1" Grid.Row="6" x:Name="DPickCreateDismission" Margin="10" Width="160"/>
+                          
+                          <TextBlock Grid.Column="0" Grid.Row="7" Text="Дата увольнения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                          <DatePicker Grid.Column="1" Grid.Row="7" x:Name="DPickDismission" Margin="10" Width="160"/>
+                          <Button Grid.Column="0" Grid.Row="8" HorizontalAlignment="Center" Margin="10" Grid.ColumnSpan="2" x:Name="BtnSaveEmpToWork" Click="BtnSaveEmpToWork_OnClick" Content="Сохранить данные трудоустройства"/>
+
+
                       </Grid>
-                  </Grid>
+
+                    </Grid>
+                  </Border>
+
               </TabItem>
                   
       </TabControl> 
+
   </StackPanel>
+   </Grid>
 </Window>
