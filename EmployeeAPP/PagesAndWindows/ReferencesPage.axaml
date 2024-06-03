@@ -16,7 +16,7 @@
                 
                  <DataGrid  x:Name="DataGridUnit"
                             AutoGenerateColumns="False"
-                            IsReadOnly="True" Background="Coral" Height="550" Width="980"
+                            IsReadOnly="True"  Height="550" Width="980"
                             GridLinesVisibility="All"
                             BorderThickness="2"
                             Margin="30" 
@@ -34,7 +34,7 @@
               <StackPanel>
                  <DataGrid  x:Name="DataGridPosition"
                              AutoGenerateColumns="False"
-                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
+                             IsReadOnly="True"  Height="550" Width="980"
                              GridLinesVisibility="All"
                              BorderThickness="2"
                              Margin="30" 
@@ -52,7 +52,7 @@
               <StackPanel>
                   <DataGrid  x:Name="DataGridPassport"
                              AutoGenerateColumns="False"
-                             IsReadOnly="True" Background="Coral" Height="550" Width="980"
+                             IsReadOnly="True"  Height="550" Width="980"
                              GridLinesVisibility="All"
                              BorderThickness="2"
                              Margin="30" 

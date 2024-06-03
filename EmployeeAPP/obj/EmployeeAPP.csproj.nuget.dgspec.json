@@ -1,33 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Grigoriy\\Pictures\\EmployeeAPP\\EmployeeAPP\\EmployeeAPP.csproj": {}
+    "C:\\Users\\23291\\RiderProjects\\EmployeeAPP1\\EmployeeAPP\\EmployeeAPP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Grigoriy\\Pictures\\EmployeeAPP\\EmployeeAPP\\EmployeeAPP.csproj": {
+    "C:\\Users\\23291\\RiderProjects\\EmployeeAPP1\\EmployeeAPP\\EmployeeAPP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Grigoriy\\Pictures\\EmployeeAPP\\EmployeeAPP\\EmployeeAPP.csproj",
+        "projectUniqueName": "C:\\Users\\23291\\RiderProjects\\EmployeeAPP1\\EmployeeAPP\\EmployeeAPP.csproj",
         "projectName": "EmployeeAPP",
-        "projectPath": "C:\\Users\\Grigoriy\\Pictures\\EmployeeAPP\\EmployeeAPP\\EmployeeAPP.csproj",
-        "packagesPath": "C:\\Users\\Grigoriy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Grigoriy\\Pictures\\EmployeeAPP\\EmployeeAPP\\obj\\",
+        "projectPath": "C:\\Users\\23291\\RiderProjects\\EmployeeAPP1\\EmployeeAPP\\EmployeeAPP.csproj",
+        "packagesPath": "C:\\Users\\23291\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\23291\\RiderProjects\\EmployeeAPP1\\EmployeeAPP\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Grigoriy\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\23291\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -48,11 +40,11 @@
           "dependencies": {
             "Avalonia": {
               "target": "Package",
-              "version": "[11.0.2, )"
+              "version": "[11.0.10, )"
             },
             "Avalonia.Desktop": {
               "target": "Package",
-              "version": "[11.0.2, )"
+              "version": "[11.0.10, )"
             },
             "Avalonia.Diagnostics": {
               "target": "Package",
@@ -65,6 +57,10 @@
             "Avalonia.Themes.Fluent": {
               "target": "Package",
               "version": "[11.0.2, )"
+            },
+            "AvaloniaUI.PrintToPDF": {
+              "target": "Package",
+              "version": "[0.5.0, )"
             },
             "EPPlus": {
               "target": "Package",
@@ -90,12 +86,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     }

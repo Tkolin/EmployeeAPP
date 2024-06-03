@@ -3,7 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" 
-        MinHeight="640" MinWidth="1300" MaxHeight="640" MaxWidth="1300"
+        MinHeight="640" MinWidth="1300" MaxHeight="640" MaxWidth="1900"
         x:Class="EmployeeAPP.PagesAndWindows.EmployeeEditPage"
         xmlns:models="clr-namespace:EmployeeAPP.Model"
         Title="Редактирование сотрудника">
@@ -78,7 +78,7 @@
                      <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="*,*">
                           <DataGrid   x:Name="DataGridEmployeeToWork"
                                     AutoGenerateColumns="False" SelectionChanged="DataGridEmployeeToWork_OnSelectionChanged"
-                                    IsReadOnly="True" Background="Coral" 
+                                    IsReadOnly="True" 
                                     GridLinesVisibility="All"
                                     BorderThickness="4"  Height="350"
                                     x:DataType="models:EmployeeToWork">
@@ -95,6 +95,7 @@
                           </DataGrid>
                          <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="3" x:Name="Panel1">
                              <Button  HorizontalAlignment="Center" x:Name="BtnAddEmpToWork" Content="Добавить" Click="BtnAddEmpToWork_OnClick"/>
+                             <Button  HorizontalAlignment="Center" x:Name="BtnEditEmpToWork" Content="Изменить" Click="BtnEditEmpToWork_OnClick"/>
                              <Button  HorizontalAlignment="Center" x:Name="BtnResetEmpToWork" Content="Отменить" Click="BtnResetEmpToWork_OnClick"/>
                          </StackPanel>
                      </Grid>
@@ -129,16 +130,16 @@
                           </ComboBox>
 
                           <TextBlock Grid.Column="0" Grid.Row="4" Text="Дата документа трудоустройства: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <DatePicker Grid.Column="1" Grid.Row="4" x:Name="DPickCreateEmploy" Margin="10" Width="160"/>
+                          <DatePicker Grid.Column="1" Grid.Row="4" x:Name="DPickCreateEmploy" Margin="10" Width="500"/>
 
                           <TextBlock Grid.Column="0" Grid.Row="5" Text="Дата трудоустройства: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <DatePicker Grid.Column="1" Grid.Row="5" x:Name="DPickEmploy" Margin="10" Width="160"/>
+                          <DatePicker Grid.Column="1" Grid.Row="5" x:Name="DPickEmploy" Margin="10" Width="500"/>
                           
                           <TextBlock Grid.Column="0" Grid.Row="6" Text="Дата документа увольнения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <DatePicker Grid.Column="1" Grid.Row="6" x:Name="DPickCreateDismission" Margin="10" Width="160"/>
+                          <DatePicker Grid.Column="1" Grid.Row="6" x:Name="DPickCreateDismission" Margin="10" Width="500"/>
                           
                           <TextBlock Grid.Column="0" Grid.Row="7" Text="Дата увольнения: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                          <DatePicker Grid.Column="1" Grid.Row="7" x:Name="DPickDismission" Margin="10" Width="160"/>
+                          <DatePicker Grid.Column="1" Grid.Row="7" x:Name="DPickDismission" Margin="10" Width="500"/>
                           <Button Grid.Column="0" Grid.Row="8" HorizontalAlignment="Center" Margin="10" Grid.ColumnSpan="2" x:Name="BtnSaveEmpToWork" Click="BtnSaveEmpToWork_OnClick" Content="Сохранить данные трудоустройства"/>
 
 

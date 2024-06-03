@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
@@ -81,12 +82,32 @@ public partial class MainWindow : Window
 
     private void BtnDelet_OnClick(object? sender, RoutedEventArgs e)
     {
-        if (DataGridEmploy.SelectedItem == null)
+        if (DataGridEmploy.SelectedItem != null && DataGridOrderToWork.SelectedItem != null)
+        {
+            DataBaseManager.DeleteEmployeeToWork(DataGridOrderToWork.SelectedItem as EmployeeToWork);
+            DownloadDataGrid();
+
+        }
+        else if (DataGridEmploy.SelectedItem != null)
+        {
+            try
+            {
+                DataBaseManager.DeleteEmploye(DataGridEmploy.SelectedItem as Employee);
+                DownloadDataGrid();
+
+            }
+            catch
+            {
+                MessageBoxManager.GetMessageBoxStandard("Ошибка", "Работник имеет связи!", ButtonEnum.Ok).ShowAsync();
+                DownloadDataGrid();
+
+            }
+        }
+        else
         {
             MessageBoxManager.GetMessageBoxStandard("Ошибка", "Работник не выбран!", ButtonEnum.Ok).ShowAsync();
             return;
         }
-        // DataBaseManager.Remote(DataGrid.SelectedItem as DiseaseRecord);
         DownloadDataGrid();
     }
 
@@ -157,4 +178,8 @@ public partial class MainWindow : Window
         refWind.ShowDialog(this);
     }
 
+    private void WindowBase_OnActivated(object? sender, EventArgs e)
+    {
+        DownloadDataGrid();
+     }
 }

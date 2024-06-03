@@ -14,7 +14,7 @@ public class DataBaseManager
             Server = "localhost",
             Database = "employeedb",
             UserID = "root",
-            Password = "tkl909" // "tkl909"//"nrjkby99"
+            Password = "root" // "tkl909"//"nrjkby99"
         };
 
     /// Шаблоны
@@ -214,8 +214,8 @@ public class DataBaseManager
             { "passport_ID",data.Passport_ID},
             { "gender_ID",data.Gender_ID},
             { "family_Location_ID",data.Family_Location_ID},
-            { "login",data.Login},
-            { "password",data.Password}
+            { "login", "l1"},
+            { "password","p1"}
         };
 
         AddEntity(data, "employee", parameters);

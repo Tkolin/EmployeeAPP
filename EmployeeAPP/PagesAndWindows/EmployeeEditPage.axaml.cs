@@ -109,9 +109,15 @@ public partial class EmployeeEditPage : Window
     {
         DataGridEmployeeToWork.SelectedItem = null;
         DataGridEmployeeToWork_OnSelectionChanged(sender,null);
-        
+        addEmptToWork = true;
         Panel2.IsEnabled = true;
 
+    }
+    private void BtnEditEmpToWork_OnClick(object? sender, RoutedEventArgs e)
+    {
+        Panel2.IsEnabled = true;
+
+        addEmptToWork = false;
     }
     /// <summary>
     /// 1 Раздел 
@@ -160,9 +166,6 @@ public partial class EmployeeEditPage : Window
             DPickEmploy.SelectedDate = null;
             DPickCreateDismission.SelectedDate = null;
             DPickDismission.SelectedDate   = null;
-
-            addEmptToWork = true;
-           
             return;
         }
         
@@ -203,7 +206,12 @@ public partial class EmployeeEditPage : Window
             MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не заполнены!", ButtonEnum.Ok).ShowAsync();
             return;
         }
-        _employeeToWork = new EmployeeToWork();
+
+        if (addEmptToWork)
+            _employeeToWork = new EmployeeToWork();
+        else
+         _employeeToWork = DataGridEmployeeToWork.SelectedItem as EmployeeToWork;
+
         _employeeToWork.Employee_ID = _employeeEdit.ID;
         _employeeToWork.Position_ID = (CBoxPosition.SelectedItem as Position).ID;
         _employeeToWork.Unit_ID = (CBoxUnit.SelectedItem as Unit).ID;
@@ -221,15 +229,23 @@ public partial class EmployeeEditPage : Window
                     
             UpdateComBox();
             FilterViewData();
+            MessageBoxManager.GetMessageBoxStandard("Успех", "Данные успешно добавлены!", ButtonEnum.Ok).ShowAsync();
+            Tab2UpdateView();
         }
         else
         {
+
             DataBaseManager.UpdateEmployeeToWork(_employeeToWork);
             DownloadData();
                     
             UpdateComBox();
             FilterViewData();
+            Panel2.IsEnabled = false;
+            MessageBoxManager.GetMessageBoxStandard("Успех", "Данные успешно изменены!", ButtonEnum.Ok).ShowAsync();
+            Tab2UpdateView();
         }
+        
+        
     }
 
     private void Button_OnClick(object? sender, RoutedEventArgs e)
@@ -296,4 +312,6 @@ public partial class EmployeeEditPage : Window
 
         addEmptToWork = false;
     }
+
+
 }
